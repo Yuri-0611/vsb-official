@@ -43,7 +43,7 @@
     img { max-width: 100%; height: auto; display: block; }
     a { color: inherit; }
 
-    .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+    .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 1.35rem; }
     @media (min-width: 768px) { .container { padding: 0 1.75rem; } }
 
     /* Header */
@@ -69,6 +69,12 @@
       display: flex;
       flex-direction: column;
       gap: 0.1rem;
+      margin-left: 0.5rem;
+      min-width: 0;
+      flex-shrink: 1;
+    }
+    @media (min-width: 768px) {
+      .brand { margin-left: 0.35rem; }
     }
     .brand__name { font-weight: 800; font-size: 1.125rem; letter-spacing: -0.02em; color: var(--navy); }
     .brand__sub { font-size: 0.65rem; font-weight: 700; color: var(--blue); letter-spacing: 0.06em; text-transform: uppercase; }
@@ -109,7 +115,17 @@
         radial-gradient(ellipse 70% 50% at 0% 100%, rgba(14, 165, 233, 0.12) 0%, transparent 50%);
       pointer-events: none;
     }
-    .hero__inner { position: relative; z-index: 1; text-align: center; max-width: 40rem; margin: 0 auto; }
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 40rem;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
     .hero__cta-top {
       margin-bottom: 1.75rem;
     }
@@ -151,6 +167,69 @@
       font-size: 0.75rem;
       font-weight: 700;
       color: var(--blue);
+    }
+    /* I型：スマホ縦スクロールで「見出し→説明→LINE」の縦の柱 */
+    .i-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1.25rem;
+    }
+    .i-stack--tight { gap: 1rem; }
+    .cv-line-cta {
+      width: 100%;
+      max-width: 22rem;
+      justify-content: center;
+      margin: 0;
+    }
+    .cv-line-cta--wide { max-width: 100%; }
+    @media (max-width: 639px) {
+      .i-stack .cv-line-cta { align-self: center; }
+    }
+    .cv-micro {
+      font-size: 0.8125rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    /* Z型：ワイド画面で左右が交互に入れ替わる2カラム */
+    .cv-z__grid {
+      display: grid;
+      gap: 2rem;
+      align-items: center;
+    }
+    @media (min-width: 900px) {
+      .cv-z__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+      }
+      .profile .cv-z__grid {
+        grid-template-columns: minmax(200px, 280px) 1fr;
+      }
+      .cv-z--reverse .cv-z__content { order: 2; }
+      .cv-z--reverse .cv-z__aside { order: 1; }
+    }
+
+    /* セクション間のコンバージョン帯（I型の横断CTA） */
+    .cv-line-bar {
+      padding: 1.35rem 0;
+      background: linear-gradient(180deg, #f0f7ff 0%, #e8f0ff 100%);
+      border-top: 1px solid rgba(37, 99, 235, 0.12);
+      border-bottom: 1px solid rgba(37, 99, 235, 0.12);
+    }
+    .cv-line-bar__inner {
+      max-width: 26rem;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0 1.35rem;
+    }
+    .cv-line-bar__text {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.85rem;
+      line-height: 1.55;
     }
 
     /* Sections common */
@@ -207,14 +286,6 @@
     .why {
       background: linear-gradient(180deg, var(--gray-100) 0%, var(--white) 100%);
     }
-    .why__layout {
-      display: grid;
-      gap: 2rem;
-      align-items: start;
-    }
-    @media (min-width: 900px) {
-      .why__layout { grid-template-columns: 1fr 1.05fr; gap: 2.5rem; align-items: center; }
-    }
     .why__figure {
       border-radius: var(--radius-lg);
       overflow: hidden;
@@ -257,14 +328,6 @@
 
     /* Profile */
     .profile { background: var(--white); }
-    .profile__wrap {
-      display: grid;
-      gap: 2rem;
-      align-items: start;
-    }
-    @media (min-width: 768px) {
-      .profile__wrap { grid-template-columns: minmax(200px, 240px) 1fr; gap: 2.5rem; }
-    }
     .profile__photo-wrap {
       display: flex;
       flex-direction: column;
@@ -391,6 +454,11 @@
     }
     .flow-step h3 { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: 0.4rem; }
     .flow-step p { font-size: 0.875rem; color: var(--gray-600); line-height: 1.75; }
+    .flow__line-cta {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 1.75rem;
+    }
 
     /* SNS footer block */
     .contact {
@@ -505,63 +573,99 @@
     </div>
   </section>
 
-  <section class="concept" id="concept" aria-labelledby="concept-title">
-    <div class="container">
-      <p class="section-label">Concept</p>
-      <h2 class="section-title" id="concept-title">VSBとは</h2>
-      <p class="section-lead">
-        VSBは、単なる太極拳教室ではありません。<strong>運動不足の社会人と、マイナースポーツをつなぐマッチング・プラットフォーム</strong>です。
-        会社でも家庭でもない、<strong>大人のサードプレイス</strong>として、続けられる運動習慣と、意味のあるつながりを同時に育てます。
-      </p>
-      <div class="concept__grid">
-        <div class="concept-card">
-          <h3>社会人に届けるもの</h3>
-          <p>「どこで、誰と、どう動けばいいかが分からない」状態から抜け出すための場。比較や序列より、まず参加しやすい空気を設計します。</p>
-        </div>
-        <div class="concept-card">
-          <h3>選手・競技に届けるもの</h3>
-          <p>マイナースポーツの価値を社会に翻訳し、正当な報酬につながる導線を増やすこと。熱量と技術が、狭いコミュニティの外でも評価される未来を目指します。</p>
-        </div>
-      </div>
+  <div class="cv-line-bar" role="region" aria-label="公式LINE登録の案内">
+    <div class="cv-line-bar__inner">
+      <p class="cv-line-bar__text">公式LINEでは、<strong>武術太極拳の元全日本チャンピオン</strong>が<strong>あなたの体の悩みをヒアリング</strong>し、太極拳の視点から<strong>すぐにできる軽いストレッチ感覚の「今日の一手」</strong>をご提案できます。あわせて先行案内や練習の様子（不定期）もお届けします。</p>
+      <a class="btn-line cv-line-cta cv-line-cta--wide" href="https://lin.ee/zmMHdeD" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="22" height="22"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.944c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.084.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        公式LINEに登録する
+      </a>
     </div>
-  </section>
+  </div>
 
-  <section class="why" id="why-taiji" aria-labelledby="why-title">
-    <div class="container">
-      <p class="section-label">Entry</p>
-      <h2 class="section-title" id="why-title">なぜ最初は太極拳なのか</h2>
-      <p class="section-lead">
-        太極拳は、VSBの「すべて」ではありません。<strong>運動不足の社会人が、最初の一歩を踏み出しやすい入り口</strong>として位置づけています。
-        最大の理由は、<strong>代表自身が武術太極拳の元日本チャンピオンであり、強化指定選手として活動しているから</strong>です。
-        本物のトップレベルが、初心者の身体と呼吸の土台から伴走します。
-      </p>
-      <div class="why__layout">
-        <figure class="why__figure">
-          <img class="h-64 md:h-80 object-cover object-position-50-50" src="match.jpg.jpg" alt="武術太極拳の試合・演武の様子" width="1200" height="900" loading="lazy" />
-        </figure>
+  <section class="concept cv-z" id="concept" aria-labelledby="concept-title">
+    <div class="container cv-z__grid">
+      <div class="cv-z__content i-stack i-stack--tight">
         <div>
-          <ul class="why__list">
-            <li><strong>道具不要</strong>で始めやすい。準備の負担を減らし、まず「来る・動く」まで最短にします。</li>
-            <li><strong>初心者歓迎</strong>。マイナースポーツを軸にすることで、経験格差が出にくい空気をつくりやすい。</li>
-            <li><strong>運動強度が高すぎない</strong>ため、平日デスクワークの身体にも負担がかけにくい。脱力・姿勢・呼吸から整える。</li>
-          </ul>
+          <p class="section-label">Concept</p>
+          <h2 class="section-title" id="concept-title">VSBとは</h2>
+          <p class="section-lead" style="margin-bottom: 0;">
+            VSBは、単なる太極拳教室ではありません。<strong>運動不足の社会人と、マイナースポーツをつなぐマッチング・プラットフォーム</strong>です。
+            会社でも家庭でもない、<strong>大人のサードプレイス</strong>として、続けられる運動習慣と、意味のあるつながりを同時に育てます。
+          </p>
+        </div>
+        <a class="btn-line cv-line-cta" href="https://lin.ee/zmMHdeD" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="22" height="22"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.944c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.084.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          まず公式LINEに登録
+        </a>
+        <p class="cv-micro">ヒアリングに応じた<strong>「今日の一手」</strong>や、次の一歩の案内を登録後のメッセージでお送りします。</p>
+      </div>
+      <div class="cv-z__aside">
+        <div class="concept__grid">
+          <div class="concept-card">
+            <h3>社会人に届けるもの</h3>
+            <p>「どこで、誰と、どう動けばいいかが分からない」状態から抜け出すための場。比較や序列より、まず参加しやすい空気を設計します。</p>
+          </div>
+          <div class="concept-card">
+            <h3>選手・競技に届けるもの</h3>
+            <p>マイナースポーツの価値を社会に翻訳し、正当な報酬につながる導線を増やすこと。熱量と技術が、狭いコミュニティの外でも評価される未来を目指します。</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="profile" id="profile" aria-labelledby="profile-title">
+  <section class="why cv-z cv-z--reverse" id="why-taiji" aria-labelledby="why-title">
+    <div class="container cv-z__grid">
+      <figure class="why__figure cv-z__aside">
+        <img class="h-64 md:h-80 object-cover object-position-50-50" src="match.jpg.jpg" alt="武術太極拳の試合・演武の様子" width="1200" height="900" loading="lazy" />
+      </figure>
+      <div class="cv-z__content i-stack i-stack--tight">
+        <div>
+          <p class="section-label">Entry</p>
+          <h2 class="section-title" id="why-title">なぜ最初は太極拳なのか</h2>
+          <p class="section-lead" style="margin-bottom: 0;">
+            太極拳は、VSBの「すべて」ではありません。<strong>運動不足の社会人が、最初の一歩を踏み出しやすい入り口</strong>として位置づけています。
+            最大の理由は、<strong>代表自身が武術太極拳の元日本チャンピオンであり、強化指定選手として活動しているから</strong>です。
+            本物のトップレベルが、初心者の身体と呼吸の土台から伴走します。
+          </p>
+        </div>
+        <a class="btn-line cv-line-cta" href="https://lin.ee/zmMHdeD" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="22" height="22"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.944c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.084.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          公式LINEで続きを受け取る
+        </a>
+        <ul class="why__list" style="margin-top: 0;">
+          <li><strong>道具不要</strong>で始めやすい。準備の負担を減らし、まず「来る・動く」まで最短にします。</li>
+          <li><strong>初心者歓迎</strong>。マイナースポーツを軸にすることで、経験格差が出にくい空気をつくりやすい。</li>
+          <li><strong>運動強度が高すぎない</strong>ため、平日デスクワークの身体にも負担がかけにくい。脱力・姿勢・呼吸から整える。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="cv-line-bar" role="region" aria-label="公式LINE登録の案内">
+    <div class="cv-line-bar__inner">
+      <p class="cv-line-bar__text">読んだタイミングでOK。登録だけ先に済ませると、案内を取りこぼしません。</p>
+      <a class="btn-line cv-line-cta cv-line-cta--wide" href="https://lin.ee/zmMHdeD" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="22" height="22"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.944c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.084.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        公式LINEに登録する
+      </a>
+    </div>
+  </div>
+
+  <section class="profile cv-z" id="profile" aria-labelledby="profile-title">
     <div class="container">
       <p class="section-label">Founder</p>
       <h2 class="section-title" id="profile-title">代表プロフィール</h2>
       <p class="section-lead">信頼は、言葉だけでは足りません。現場で積み上げてきた競技人生と、事業への覚悟をお伝えします。</p>
-      <div class="profile__wrap">
-        <div class="profile__photo-wrap">
+      <div class="cv-z__grid">
+        <div class="cv-z__aside profile__photo-wrap">
           <div class="profile__avatar">
             <img class="object-position-50-15" src="profile.jpg.jpg" alt="代表 亀井宥吏のプロフィール写真（スーツ姿）" width="440" height="440" loading="lazy" />
           </div>
         </div>
-        <div class="profile__body">
+        <div class="cv-z__content i-stack i-stack--tight">
+          <div class="profile__body">
           <p>
             <strong>代表：亀井宥吏</strong>。20歳の若き起業家であり、<strong>武術太極拳の元日本チャンピオン</strong>、<strong>全日本強化指定選手</strong>として競技の最前線にいます。
           </p>
@@ -572,6 +676,11 @@
           <p>
             熱狂だけでは続きません。だからこそ、誠実に設計し、参加しやすい入り口から、長く続くコミュニティへつなげていきます。
           </p>
+          <a class="btn-line cv-line-cta" href="https://lin.ee/zmMHdeD" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="22" height="22"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.944c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.084.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+            代表の発信は公式LINEでも
+          </a>
+          <p class="cv-micro" style="margin-bottom: 0;">体の悩みのヒアリングと<strong>「今日の一手」</strong>のご提案、次の案内は登録後のメッセージでお送りします。</p>
           <div class="profile__achieve">
             <div class="profile__achieve-row">
               <div class="profile__achieve-text">
@@ -590,6 +699,7 @@
               </figure>
             </div>
           </div>
+          </div>
         </div>
       </div>
     </div>
@@ -599,12 +709,16 @@
     <div class="container">
       <p class="section-label">Flow</p>
       <h2 class="section-title" id="flow-title">参加の流れ</h2>
-      <p class="section-lead">まずは情報取得から。無理な勧誘はしません。</p>
+      <p class="section-lead" style="margin-bottom: 1rem;">まずは情報取得から。無理な勧誘はしません。</p>
+      <a class="btn-line cv-line-cta flow__line-cta" href="https://lin.ee/zmMHdeD" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="22" height="22"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.944c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.084.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        ステップ1：公式LINEに登録する
+      </a>
       <div class="flow__steps">
         <article class="flow-step">
           <span class="flow-step__num" aria-hidden="true">1</span>
           <h3>公式LINEに登録</h3>
-          <p>最新のイベント案内や、参加に必要な情報を先行でお届けします。</p>
+          <p>武術太極拳の<strong>元全日本チャンピオン</strong>による<strong>体の悩みヒアリング</strong>と、太極拳の視点からの<strong>「今日の一手」</strong>（すぐできる軽いストレッチ感覚の動き）、最新のイベント案内などを先行でお届けします。</p>
         </article>
         <article class="flow-step">
           <span class="flow-step__num" aria-hidden="true">2</span>
@@ -620,11 +734,21 @@
     </div>
   </section>
 
+  <div class="cv-line-bar" role="region" aria-label="公式LINE登録の案内">
+    <div class="cv-line-bar__inner">
+      <p class="cv-line-bar__text">ここまで読んでいただけた方へ。次の一歩は<strong>公式LINEの登録</strong>からで大丈夫です。</p>
+      <a class="btn-line cv-line-cta cv-line-cta--wide" href="https://lin.ee/zmMHdeD" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="22" height="22"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.944c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.084.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        公式LINEに登録する
+      </a>
+    </div>
+  </div>
+
   <section class="contact" id="contact" aria-labelledby="contact-title">
     <div class="container">
       <p class="section-label" style="color: #93c5fd;">Contact</p>
-      <h2 class="section-title" id="contact-title">SNS・お問い合わせ</h2>
-      <p class="contact__lead">メインのご案内は公式LINEから。Instagram・Facebookでも発信しています。</p>
+      <h2 class="section-title" id="contact-title">まずは公式LINEへ</h2>
+      <p class="contact__lead">このLPの主なご案内は<strong style="color: #fff;">公式LINEの登録</strong>です。登録後は、<strong style="color: #fff;">武術太極拳の元全日本チャンピオン</strong>が体の悩みをヒアリングし、太極拳の視点から<strong style="color: #fff;">「今日の一手」</strong>（すぐできる軽い動き）をご提案できるほか、詳細案内もお届けします。そのほか Instagram・Facebook・note でも発信しています。</p>
       <div class="contact__buttons">
         <a class="sns-btn sns-btn--line" href="https://lin.ee/zmMHdeD" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.944c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.084.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>

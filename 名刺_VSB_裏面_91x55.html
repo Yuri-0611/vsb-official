@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VSB 名刺 裏面 91×55mm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* 文字はグリーン系グレー。背景は添付の布調テクスチャ（名刺_裏面背景.png）を 91×55 に cover でトリミング */
+    :root {
+      --ink: #3d4a42;
+      --ink-soft: #5a665e;
+      --accent: #2f3d36;
+      --paper: #fafafa;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    @page {
+      size: 91mm 55mm;
+      margin: 0;
+    }
+
+    body {
+      margin: 0;
+      background: #ccc;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .sheet {
+      width: 91mm;
+      height: 55mm;
+      margin: 12px auto;
+      background-color: var(--paper);
+      background-image: url("名刺_裏面背景.png");
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      color: var(--ink);
+      font-family: "Noto Sans JP", sans-serif;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    }
+
+    /* 全体の薄いベール（text-shadow は PDF/キャプチャ/Canva 取り込みで黒帯になることがあるため使わない） */
+    .sheet::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.28);
+      pointer-events: none;
+    }
+
+    .inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 3mm;
+      height: 100%;
+      padding: 3.5mm 4mm 3.5mm 4.5mm;
+    }
+
+    .copy {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.58);
+      padding: 2mm 2.5mm 2mm 2.2mm;
+      border-radius: 1mm;
+    }
+
+    .catch {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 600;
+      font-size: 7.2pt;
+      line-height: 1.55;
+      letter-spacing: 0.02em;
+      color: var(--accent);
+      margin-bottom: 2mm;
+    }
+
+    .benefits {
+      font-size: 5.5pt;
+      line-height: 1.48;
+      color: var(--ink-soft);
+      font-weight: 500;
+    }
+
+    .benefits li {
+      list-style: none;
+      position: relative;
+      padding-left: 2.8mm;
+      margin-bottom: 0.6mm;
+    }
+
+    .benefits li::before {
+      content: "・";
+      position: absolute;
+      left: 0;
+      color: var(--ink);
+    }
+
+    .cta {
+      margin-top: 1.8mm;
+      font-size: 5.5pt;
+      line-height: 1.45;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .qr-col {
+      flex-shrink: 0;
+      width: 26mm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.58);
+      padding: 1.5mm 1mm;
+      border-radius: 1mm;
+    }
+
+    #qr {
+      background: #fff;
+      padding: 1mm;
+      line-height: 0;
+    }
+
+    #qr img {
+      display: block;
+    }
+
+    .qr-label {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 600;
+      font-size: 6pt;
+      color: var(--accent);
+      margin-top: 1.2mm;
+      letter-spacing: 0.08em;
+    }
+
+    .qr-url {
+      font-size: 4.5pt;
+      color: var(--ink-soft);
+      margin-top: 0.4mm;
+      word-break: break-all;
+      line-height: 1.25;
+      max-width: 26mm;
+    }
+
+    .print-hint {
+      max-width: 91mm;
+      margin: 8px auto 24px;
+      padding: 0 12px;
+      font-size: 12px;
+      color: #333;
+      font-family: system-ui, sans-serif;
+    }
+
+    @media print {
+      body { background: white; }
+      .sheet { margin: 0; box-shadow: none; }
+      .print-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <p class="print-hint">
+    印刷：ブラウザで「印刷」→ 用紙サイズに「ユーザー定義 91×55mm」が無い場合は「実寸／カスタム」で設定するか、PDF保存後にアクセアのテンプレに配置してください。背景色・グラデは「背景のグラフィック」印刷をオンにしてください。
+  </p>
+
+  <div class="sheet" id="card">
+    <div class="inner">
+      <div class="copy">
+        <p class="catch">
+          運動不足の社会人と、マイナースポーツをつなぐ。<br />
+          大人のサードプレイス、VSB。
+        </p>
+        <ul class="benefits">
+          <li>イベント・募集はLINEで先行案内</li>
+          <li>全日本強化指定選手の練習の短い動画や雰囲気もLINEで（不定期）</li>
+          <li>体の不調のヒアリングに応じ、個別に対応（※医療ではありません）</li>
+        </ul>
+        <p class="cta">
+          → 右のQRコードから公式サイトへ（サイト上部のLINEから登録）
+        </p>
+      </div>
+      <div class="qr-col">
+        <div id="qr"></div>
+        <div class="qr-label">公式サイト</div>
+        <div class="qr-url">yuri-0611.github.io/vsb-official/</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    (function () {
+      var url = "https://yuri-0611.github.io/vsb-official/";
+      var el = document.getElementById("qr");
+      el.innerHTML = "";
+      new QRCode(el, {
+        text: url,
+        width: 92,
+        height: 92,
+        colorDark: "#2f3d36",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    })();
+  </script>
+</body>
+</html>

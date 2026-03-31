@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080, height=1920, initial-scale=1" />
+  <title>ストーリー 1枚だけ版</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; background: #1a1a1a; }
+    .frame {
+      width: min(100vw, 405px);
+      aspect-ratio: 9 / 16;
+      margin: 0 auto;
+      background: linear-gradient(165deg, #e8f0ff 0%, #ffffff 40%, #dbeafe 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9% 8%;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+    p {
+      font-size: clamp(0.88rem, 4.1vw, 1.08rem);
+      font-weight: 700;
+      line-height: 1.8;
+      color: #0c1929;
+      text-align: center;
+      letter-spacing: -0.02em;
+    }
+    .accent {
+      color: #2563eb;
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p>公式LINEで<span class="accent">体の悩み相談</span>スタート。<br />番号を選ぶだけ。<br />練習の様子も不定期で。<br /><br />プロフィールのリンクから<br />どうぞ。</p>
+  </div>
+</body>
+</html>

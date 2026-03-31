@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1080, height=1920, initial-scale=1" />
+  <title>ストーリー 1枚目</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; background: #1a1a1a; }
+    .frame {
+      position: relative;
+      width: min(100vw, 405px);
+      aspect-ratio: 9 / 16;
+      margin: 0 auto;
+      background: linear-gradient(165deg, #e8f0ff 0%, #ffffff 45%, #dbeafe 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8%;
+      font-family: "Noto Sans JP", sans-serif;
+    }
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 100% 0%, rgba(37, 99, 235, 0.12) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .wrap {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      width: 100%;
+    }
+    h1 {
+      font-size: clamp(1.15rem, 5.2vw, 1.45rem);
+      font-weight: 800;
+      line-height: 1.65;
+      color: #0c1929;
+      letter-spacing: -0.02em;
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="wrap">
+      <h1>お知らせです。<br /><br />公式LINEで、<br />体の悩み相談を<br />始めました。</h1>
+    </div>
+  </div>
+</body>
+</html>
