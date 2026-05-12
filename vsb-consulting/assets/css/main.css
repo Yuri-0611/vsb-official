@@ -1084,3 +1084,17 @@ button, input, select, textarea { font: inherit; }
   white-space: nowrap;
   border: 0;
 }
+/* --- スマホ版の巨大写真を修正 --- */
+@media screen and (max-width: 768px) {
+  /* ヒーローセクションの高さを画面の半分以下に抑える */
+  .hero, .hero-section, .main-visual, section:first-of-type {
+    height: 350px !important; 
+    min-height: 350px !important;
+  }
+  
+  /* 画像が伸びたり縮んだりしないように調整 */
+  .hero img, .hero-section img {
+    object-fit: cover;
+    height: 100%;
+  }
+}
