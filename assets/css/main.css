@@ -270,7 +270,7 @@ button, input, select, textarea { font: inherit; }
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
   object-fit: cover;
-  object-position: center;
+  object-position: 30% 28%;
   aspect-ratio: 1024 / 682;
 }
 .hero__photo {
