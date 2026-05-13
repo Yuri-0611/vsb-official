@@ -349,6 +349,10 @@ button, input, select, textarea { font: inherit; }
   }
 }
 
+#inquiry {
+  scroll-margin-top: calc(var(--header-h) + 1rem);
+}
+
 .section {
   padding: 4.5rem 0;
 }
