@@ -237,6 +237,9 @@ button, input, select, textarea { font: inherit; }
 .hero__title-line {
   display: block;
 }
+.hero-keep {
+  white-space: nowrap;
+}
 @media (max-width: 599px) {
   .hero h1.hero__title {
     font-size: clamp(1.45rem, 5.2vw, 1.95rem);
