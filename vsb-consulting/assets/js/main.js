@@ -43,13 +43,11 @@
       .catch(function (error) {
         if (status) {
           var message =
-            "送信に失敗しました。公開先のURL（https）からお試しください。";
+            "送信に失敗しました。インターネットに接続した状態で、当サイトのお問い合わせページから再度お試しください。";
           if (error && error.message) {
             if (error.message.indexOf("HTML files") !== -1) {
               message =
-                "このページはWebサーバー経由で開いてください。ファイルを直接開いた状態では送信できません。";
-            } else {
-              message = error.message;
+                "送信できませんでした。パソコンまたはスマートフォンのブラウザから、当サイトのお問い合わせページを開いているかご確認ください。";
             }
           }
           status.textContent = message;
