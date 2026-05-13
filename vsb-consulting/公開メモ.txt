@@ -9,6 +9,7 @@ VSB 法人向けサイト（vsb-consulting.com 想定）
 ・ドメイン `vsb-consulting.com` を公開先に向ける。
 
 ■ お問い合わせフォーム
+・サイト上の利用者向け文言には、FormSubmit 名・URL・file://・有効化手順などの技術説明を書かない（運用・初回設定はこのメモと社内で対応）。
 ・FormSubmit（https://formsubmit.co）経由で `info@vsb-consulting.jp` に送信する。
 ・初回送信時に FormSubmit から有効化メールが届く場合がある。迷惑メールも確認し、リンクを開いて有効化する。
 ・HTMLファイルを直接開いた状態（file://）では送信できない。公開先の https URL からテストする。
