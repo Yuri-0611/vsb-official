@@ -1,0 +1,25 @@
+VSB 法人向けサイト（vsb-consulting.com 想定）
+
+■ ローカル確認
+・フォルダ `vsb-consulting` を開き、`index.html` をブラウザで表示する。
+・スマホ表示はブラウザの開発者ツールで確認する。
+
+■ 公開
+・`vsb-consulting` フォルダ一式をレンタルサーバーまたは GitHub Pages にアップロードする。
+・ドメイン `vsb-consulting.com` を公開先に向ける。
+
+■ お問い合わせフォーム
+・FormSubmit（https://formsubmit.co）経由で `info@vsb-consulting.jp` に送信する。
+・初回送信時に FormSubmit から有効化メールが届く場合がある。迷惑メールも確認し、リンクを開いて有効化する。
+・HTMLファイルを直接開いた状態（file://）では送信できない。公開先の https URL からテストする。
+・資料請求はサイト上に置かず、受信後に個別メールで送付する。
+
+■ 公開に含めないもの
+・`_pptx_tmp`、`_pptx_extract.txt` などの作業用ファイルはアップロードしない。
+
+■ Google Analytics
+・測定IDを取得後、各HTMLの `head` に gtag を追加する。
+
+■ 更新
+・事例追加時はトップまたはサービスページへ追記する。
+・料金はサイトに載せない方針。
