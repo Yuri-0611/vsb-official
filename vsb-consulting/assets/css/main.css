@@ -84,9 +84,14 @@ button, input, select, textarea { font: inherit; }
   padding: 0 1rem;
   border-radius: 999px;
   background: var(--ink);
-  color: var(--paper);
+  color: #fff;
   font-weight: 700;
   font-size: 0.88rem;
+}
+.site-nav a.site-nav__cta,
+.site-nav a.site-nav__cta:hover,
+.site-nav a.site-nav__cta.is-active {
+  color: #fff;
 }
 .site-header__tools {
   display: flex;
@@ -164,8 +169,12 @@ button, input, select, textarea { font: inherit; }
   align-items: center;
   border-radius: 999px;
   background: var(--ink);
-  color: var(--paper);
+  color: #fff;
   font-weight: 700;
+}
+.mobile-nav a.mobile-nav__cta,
+.mobile-nav a.mobile-nav__cta:hover {
+  color: #fff;
 }
 .mobile-nav__social {
   display: flex;
