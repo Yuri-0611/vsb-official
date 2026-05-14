@@ -1195,20 +1195,14 @@ button, input, select, textarea { font: inherit; }
   padding: 2.5rem 0;
 }
 .site-footer small,
-.site-footer p,
-.site-footer a { color: var(--ink-muted); font-size: 0.9rem; }
-.site-footer__cta-strip a { color: inherit; }
-.site-footer__cta-strip a.btn--on-navy,
-.site-footer__cta-strip a.btn--on-navy:link,
-.site-footer__cta-strip a.btn--on-navy:visited,
-.site-footer__cta-strip a.btn--on-navy:hover {
-  color: var(--ink);
+.site-footer p {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
 }
-.site-footer__cta-strip a.btn--on-navy-outline,
-.site-footer__cta-strip a.btn--on-navy-outline:link,
-.site-footer__cta-strip a.btn--on-navy-outline:visited,
-.site-footer__cta-strip a.btn--on-navy-outline:hover {
-  color: var(--paper);
+/* .btn 付きの CTA は下の .btn--on-navy で色を決める（a { inherit } や .site-footer a に巻き込まない） */
+.site-footer a:not(.btn) {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
 }
 .footer-links {
   display: flex;
@@ -1413,4 +1407,24 @@ button, input, select, textarea { font: inherit; }
     margin-top: 1rem;
     margin-inline: auto;
   }
+}
+
+/* フッターCTA帯: 白ボタン上の文字を確実にネイビーに（a { color:inherit } / WebKit fill 対策） */
+.site-footer .site-footer__cta-strip a.btn--on-navy,
+.site-footer .site-footer__cta-strip a.btn--on-navy:link,
+.site-footer .site-footer__cta-strip a.btn--on-navy:visited,
+.site-footer .site-footer__cta-strip a.btn--on-navy:hover,
+.site-footer .site-footer__cta-strip a.btn--on-navy:focus-visible,
+.site-footer .site-footer__cta-strip a.btn--on-navy:active {
+  color: var(--ink) !important;
+  -webkit-text-fill-color: var(--ink) !important;
+}
+.site-footer .site-footer__cta-strip a.btn--on-navy-outline,
+.site-footer .site-footer__cta-strip a.btn--on-navy-outline:link,
+.site-footer .site-footer__cta-strip a.btn--on-navy-outline:visited,
+.site-footer .site-footer__cta-strip a.btn--on-navy-outline:hover,
+.site-footer .site-footer__cta-strip a.btn--on-navy-outline:focus-visible,
+.site-footer .site-footer__cta-strip a.btn--on-navy-outline:active {
+  color: var(--paper) !important;
+  -webkit-text-fill-color: var(--paper) !important;
 }
