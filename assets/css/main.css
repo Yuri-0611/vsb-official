@@ -265,28 +265,25 @@ button, input, select, textarea { font: inherit; }
 .hero-keep {
   white-space: nowrap;
 }
-/* ヒーロー2行目以降: PCは「固まっている」＋改行＋「から…」、スマホは「固まって」＋改行＋「いるから…」を1塊で */
-.hero-te-pc {
-  display: inline;
-}
-.hero-te-sp-open {
+/* ヒーロー2行目: PC用とスマホ用を切替（「ているて」の二重表示を防ぐ） */
+.hero-copy--mobile {
   display: none;
 }
-.hero-line2-sp {
-  display: inline;
+.hero-copy--desktop {
+  display: block;
 }
 br.sp-only,
 br.pc-only {
   display: none;
 }
 @media (max-width: 768px) {
-  .hero-te-pc {
+  .hero-copy--mobile {
+    display: block;
+  }
+  .hero-copy--desktop {
     display: none;
   }
-  .hero-te-sp-open {
-    display: inline;
-  }
-  .hero-line2-sp {
+  .hero-copy--mobile .hero-line2-end {
     display: inline-block;
     max-width: 100%;
     white-space: nowrap;
