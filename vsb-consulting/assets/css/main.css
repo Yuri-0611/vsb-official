@@ -1198,6 +1198,18 @@ button, input, select, textarea { font: inherit; }
 .site-footer p,
 .site-footer a { color: var(--ink-muted); font-size: 0.9rem; }
 .site-footer__cta-strip a { color: inherit; }
+.site-footer__cta-strip a.btn--on-navy,
+.site-footer__cta-strip a.btn--on-navy:link,
+.site-footer__cta-strip a.btn--on-navy:visited,
+.site-footer__cta-strip a.btn--on-navy:hover {
+  color: var(--ink);
+}
+.site-footer__cta-strip a.btn--on-navy-outline,
+.site-footer__cta-strip a.btn--on-navy-outline:link,
+.site-footer__cta-strip a.btn--on-navy-outline:visited,
+.site-footer__cta-strip a.btn--on-navy-outline:hover {
+  color: var(--paper);
+}
 .footer-links {
   display: flex;
   flex-wrap: wrap;
