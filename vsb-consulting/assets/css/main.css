@@ -262,6 +262,9 @@ button, input, select, textarea { font: inherit; }
 .hero__title-line {
   display: block;
 }
+.hero__title-display {
+  display: block;
+}
 .hero-keep {
   white-space: nowrap;
 }
