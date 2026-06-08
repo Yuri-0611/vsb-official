@@ -5,20 +5,20 @@
   var ga4 = String(cfg.ga4 || "").trim();
   var clarity = String(cfg.clarity || "").trim();
 
-  if (ga4) {
+  if (ga4 && typeof window.gtag !== "function") {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () {
+      window.dataLayer.push(arguments);
+    };
+    window.gtag("js", new Date());
+    window.gtag("config", ga4, { anonymize_ip: true, send_page_view: true });
+
     var gtagScript = document.createElement("script");
     gtagScript.async = true;
     gtagScript.src =
       "https://www.googletagmanager.com/gtag/js?id=" +
       encodeURIComponent(ga4);
     document.head.appendChild(gtagScript);
-
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () {
-      window.dataLayer.push(arguments);
-    };
-    window.gtag("js", new Date());
-    window.gtag("config", ga4, { anonymize_ip: true });
   }
 
   if (clarity) {
