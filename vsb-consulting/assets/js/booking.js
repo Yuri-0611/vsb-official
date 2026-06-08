@@ -43,7 +43,6 @@
     slotsEmpty: root.querySelector("[data-booking-slots-empty]"),
     slotsLoading: root.querySelector("[data-booking-slots-loading]"),
     summary: root.querySelector("[data-booking-summary]"),
-    syncStatus: root.querySelector("[data-booking-sync]"),
     form: root.querySelector("[data-booking-form]"),
     status: root.querySelector("[data-booking-status]"),
     hiddenDate: root.querySelector('[name="preferred_date"]'),
@@ -63,12 +62,10 @@
     renderCalendar();
     renderSlots();
     bindForm();
-    updateSyncStatus();
     if (CONFIG.calendarApiUrl) {
       loadMonthAvailability();
     } else {
       state.calendarSync = "offline";
-      updateSyncStatus();
     }
   }
 
@@ -119,7 +116,6 @@
     var token = ++state.fetchToken;
     state.calendarSync = "loading";
     state.calendarError = "";
-    updateSyncStatus();
 
     fetchCalendarJsonp(CONFIG.calendarApiUrl, range.start, range.end)
       .then(function (data) {
@@ -146,13 +142,11 @@
         renderSlots();
         updateSummary();
         validateForm();
-        updateSyncStatus();
       })
       .catch(function (err) {
         if (token !== state.fetchToken) return;
         state.calendarSync = "error";
         state.calendarError = err && err.message ? err.message : "sync failed";
-        updateSyncStatus();
       });
   }
 
@@ -207,32 +201,6 @@
     var maxEnd = addDays(today, CONFIG.maxDaysAhead);
     if (end > maxEnd) end = maxEnd;
     return { start: toISO(start), end: toISO(end) };
-  }
-
-  function updateSyncStatus() {
-    if (!els.syncStatus) return;
-    var text = "";
-    var cls = "booking__sync";
-
-    if (!CONFIG.calendarApiUrl) {
-      text =
-        "カレンダー未連携：全ての候補枠を表示しています（API URL設定後に自動で空き枠のみ表示）。";
-      cls += " booking__sync--offline";
-    } else if (state.calendarSync === "loading") {
-      text = "Googleカレンダーを確認しています…";
-      cls += " booking__sync--loading";
-    } else if (state.calendarSync === "ok") {
-      text =
-        "Googleカレンダーと同期済み。業務時間は平日9:00〜19:00（土日祝除く）。カレンダーの予定と重なる枠は自動で除外します。";
-      cls += " booking__sync--ok";
-    } else if (state.calendarSync === "error") {
-      text =
-        "カレンダー同期に失敗しました。時間枠は参考表示です。お手数ですがフォーム送信後に調整します。";
-      cls += " booking__sync--error";
-    }
-
-    els.syncStatus.className = cls;
-    els.syncStatus.textContent = text;
   }
 
   function renderCalendar() {
