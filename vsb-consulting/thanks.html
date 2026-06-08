@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>送信完了｜VSB Consulting</title>
+  <meta name="description" content="お問い合わせ・無料相談の送信が完了しました。" />
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://vsb-consulting.jp/thanks.html" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">メインコンテンツへスキップ</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html"><span class="brand__mark">VSB CONSULTING</span><span class="brand__sub">Venture Sports Base</span></a>
+      <nav class="site-nav" aria-label="メインナビゲーション">
+        <a href="service.html">サービス</a>
+        <a href="flow.html">支援の流れ</a>
+        <a href="instructor.html">代表紹介</a>
+        <a href="company.html">会社概要</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">お問い合わせ</a>
+        <a class="site-nav__cta" href="contact.html#consult">無料相談</a>
+      </nav>
+      <div class="site-header__tools">
+        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav"><span aria-hidden="true"></span><span class="sr-only">メニューを開く</span></button>
+      </div>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" data-mobile-nav aria-label="モバイルナビゲーション">
+      <a href="service.html">サービス</a>
+      <a href="flow.html">支援の流れ</a>
+      <a href="instructor.html">代表紹介</a>
+      <a href="company.html">会社概要</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a class="mobile-nav__cta" href="contact.html#consult">無料相談</a>
+    </nav>
+  </header>
+  <main id="main" class="page-center">
+    <div class="container">
+      <h1 id="thanks-title">お問い合わせを受け付けました</h1>
+      <p id="thanks-lead">ご連絡ありがとうございます。担当より<strong>数営業日以内</strong>にメールでご返信いたします。</p>
+      <p class="form__note">返信メールが届かない場合は、迷惑メールフォルダをご確認のうえ、<a href="mailto:info@vsb-consulting.jp">info@vsb-consulting.jp</a> まで直接ご連絡ください。</p>
+      <div class="cta-row" style="justify-content:center;margin-top:2rem;">
+        <a class="btn btn--primary" href="index.html">トップページへ</a>
+        <a class="btn btn--outline" href="faq.html">FAQを見る</a>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer__bottom"><div class="container"><small>© 2026 Venture Sports Base</small></div></div>
+  </footer>
+  <script src="assets/js/main.js" defer></script>
+  <script>
+    (function () {
+      if (location.search.indexOf("type=booking") !== -1) {
+        var t = document.getElementById("thanks-title");
+        var l = document.getElementById("thanks-lead");
+        if (t) t.textContent = "無料相談のご予約を受け付けました";
+        if (l) l.innerHTML = "ご希望ありがとうございます。担当より<strong>24時間以内</strong>に、確定日時をメールでご連絡します。";
+      }
+    })();
+  </script>
+</body>
+</html>
