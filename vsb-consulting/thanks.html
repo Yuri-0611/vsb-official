@@ -12,6 +12,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/main.css" />
+  <script src="assets/js/analytics-config.js"></script>
+  <script src="assets/js/analytics.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">メインコンテンツへスキップ</a>
@@ -58,11 +60,24 @@
   <script src="assets/js/main.js" defer></script>
   <script>
     (function () {
-      if (location.search.indexOf("type=booking") !== -1) {
+      var params = new URLSearchParams(location.search);
+      var type = params.get("type") || "inquiry";
+      if (type === "booking") {
         var t = document.getElementById("thanks-title");
         var l = document.getElementById("thanks-lead");
         if (t) t.textContent = "無料相談のご予約を受け付けました";
         if (l) l.innerHTML = "ご希望ありがとうございます。担当より<strong>24時間以内</strong>に、確定日時をメールでご連絡します。";
+      } else if (type === "materials") {
+        var t2 = document.getElementById("thanks-title");
+        var l2 = document.getElementById("thanks-lead");
+        if (t2) t2.textContent = "資料請求を受け付けました";
+        if (l2) l2.innerHTML = "ご請求ありがとうございます。担当より<strong>数営業日以内</strong>に、資料をメールでお送りします。";
+      }
+      if (typeof window.vsbTrackEvent === "function") {
+        window.vsbTrackEvent("conversion", {
+          conversion_type: type,
+          page_path: location.pathname,
+        });
       }
     })();
   </script>

@@ -454,6 +454,13 @@
           if (data && data.success === "false") {
             throw new Error(data.message || "send failed");
           }
+          if (typeof window.vsbTrackEvent === "function") {
+            window.vsbTrackEvent("generate_lead", {
+              form_type: "booking",
+              consultation_format: state.format,
+              page_path: location.pathname,
+            });
+          }
           var next = els.form.querySelector('[name="_next"]');
           if (next && next.value) {
             window.location.href =

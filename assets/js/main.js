@@ -100,7 +100,19 @@
         }
         var next = form.querySelector('[name="_next"]');
         if (next && next.value) {
-          window.location.href = next.value;
+          var type = "inquiry";
+          if (inquirySelect) {
+            if (inquirySelect.value.indexOf("資料") !== -1) type = "materials";
+            else if (inquirySelect.value.indexOf("その他") !== -1) type = "other";
+          }
+          if (typeof window.vsbTrackEvent === "function") {
+            window.vsbTrackEvent("generate_lead", {
+              form_type: type,
+              page_path: location.pathname,
+            });
+          }
+          var sep = next.value.indexOf("?") > -1 ? "&" : "?";
+          window.location.href = next.value + sep + "type=" + type;
           return;
         }
         form.reset();
