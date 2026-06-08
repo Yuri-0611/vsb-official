@@ -27,7 +27,7 @@
         <a href="company.html">会社概要</a>
         <a href="faq.html">FAQ</a>
         <a class="is-active" href="contact.html">お問い合わせ</a>
-        <a class="site-nav__cta" href="#consult">無料相談</a>
+        <a class="site-nav__cta" href="#booking">無料相談</a>
       </nav>
       <div class="site-header__tools">
         <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav"><span aria-hidden="true"></span><span class="sr-only">メニューを開く</span></button>
@@ -40,7 +40,7 @@
       <a href="company.html">会社概要</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">お問い合わせ</a>
-      <a class="mobile-nav__cta" href="#consult">無料相談</a>
+      <a class="mobile-nav__cta" href="#booking">無料相談</a>
     </nav>
   </header>
   <main id="main">
@@ -55,7 +55,7 @@
     <section class="page-body">
       <div class="container">
         <div class="contact-options" aria-label="お問い合わせ方法">
-          <article class="contact-option contact-option--primary" id="consult">
+          <article class="contact-option contact-option--primary" id="booking-top">
             <h3>① 無料相談（最優先）</h3>
             <p>約1時間。現状の課題整理と次の一手をご提案します。</p>
             <a class="btn btn--primary btn--sm" href="#booking">日程を選ぶ</a>
@@ -139,7 +139,7 @@
         </section>
 
         <section id="inquiry" aria-labelledby="form-title">
-          <h2 id="form-title">お問い合わせフォーム</h2>
+          <h2 id="form-title">資料請求・その他のお問い合わせ</h2>
           <form class="form" data-contact-form action="https://formsubmit.co/ajax/info@vsb-consulting.jp" method="POST">
             <input type="hidden" name="_subject" value="VSBサイトお問い合わせ" />
             <input type="hidden" name="_template" value="table" />
@@ -149,7 +149,6 @@
             <label>
               お問い合わせ種別
               <select name="inquiry_type" required>
-                <option value="無料相談">無料相談（最優先）</option>
                 <option value="資料請求">資料請求（『はじめての健康経営』無料）</option>
                 <option value="その他">その他のお問い合わせ</option>
               </select>
@@ -163,7 +162,7 @@
               <label>メールアドレス<input type="email" name="email" required autocomplete="email" /></label>
             </div>
             <label>電話番号（任意）<input type="tel" name="phone" autocomplete="tel" /></label>
-            <label>お問い合わせ内容<textarea name="message" placeholder="ご相談内容・ご希望の日時など"></textarea></label>
+            <label>お問い合わせ内容<textarea name="message" placeholder="ご相談内容・ご質問など"></textarea></label>
             <label class="form__consent">
               <input type="checkbox" name="privacy_consent" value="同意済み" required />
               <span><a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意する</span>
