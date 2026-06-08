@@ -4,7 +4,7 @@
  */
 window.VSB_ANALYTICS = {
   /** GA4 測定ID（例: G-XXXXXXXXXX） */
-  ga4: "",
+  ga4: "G-HYMQVP65E6",
   /** Microsoft Clarity プロジェクトID（英数字） */
   clarity: "",
 };
