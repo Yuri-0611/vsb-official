@@ -95,6 +95,14 @@ main { overflow-x: hidden; }
   gap: 1rem;
 }
 .brand { display: flex; flex-direction: column; gap: 0; line-height: 1.2; }
+.brand--logo { flex-direction: row; align-items: center; }
+.brand__logo {
+  display: block;
+  height: 42px;
+  width: auto;
+  max-width: min(148px, 40vw);
+}
+@media (min-width: 768px) { .brand__logo { height: 46px; max-width: 160px; } }
 .brand__mark {
   font-family: var(--font-serif);
   font-weight: 700;
@@ -616,6 +624,16 @@ main { overflow-x: hidden; }
 }
 @media (min-width: 768px) { .site-footer__grid { grid-template-columns: 1.2fr 1fr; } }
 .site-footer .brand__mark { color: var(--white); letter-spacing: 0.2em; }
+.footer__logo {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 132px;
+  margin-bottom: 1rem;
+  background: #f7f4ee;
+  padding: 0.35rem 0.55rem;
+  border-radius: 6px;
+}
 .site-footer a { color: rgba(255,255,255,0.85); transition: color 0.2s; }
 .site-footer a:hover { color: var(--gold-light); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; margin-bottom: 1rem; }
