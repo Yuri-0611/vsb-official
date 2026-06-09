@@ -158,10 +158,6 @@ main { overflow-x: hidden; }
 }
 .site-nav__cta:hover { background: var(--navy-soft); transform: translateY(-1px); }
 .site-header__tools { display: flex; align-items: center; gap: 0.5rem; margin-left: auto; }
-.header-social { display: none; align-items: center; gap: 0.35rem; }
-.header-social__link { opacity: 0.85; transition: opacity 0.2s; }
-.header-social__link:hover { opacity: 1; }
-.header-social__icon { width: 32px; height: 32px; }
 
 .menu-toggle {
   width: 44px; height: 44px;
@@ -214,16 +210,9 @@ main { overflow-x: hidden; }
   font-weight: 700;
   border: none !important;
 }
-.mobile-nav__social {
-  display: flex; justify-content: center; gap: 1rem;
-  padding: 1rem;
-  font-size: 0.8125rem;
-  color: var(--gray-600);
-}
 
 @media (min-width: 1024px) {
   .site-nav { display: flex; }
-  .header-social { display: flex; }
   .menu-toggle, .mobile-nav { display: none !important; }
 }
 
@@ -262,12 +251,6 @@ main { overflow-x: hidden; }
   border-color: var(--navy);
 }
 .btn--outline:hover { background: var(--gray-50); }
-.btn--line {
-  background: var(--white);
-  color: #06c755;
-  border-color: #06c755;
-}
-.btn--line:hover { background: #f0fdf4; }
 .btn--ghost {
   background: transparent;
   color: var(--white);
@@ -647,43 +630,51 @@ main { overflow-x: hidden; }
 .site-footer .brand__mark { color: var(--white); letter-spacing: 0.2em; }
 .footer__brand {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
 }
 .footer__brand-text {
   display: flex;
   flex-direction: column;
-  gap: 0.05rem;
+  justify-content: center;
+  gap: 0.15rem;
+  min-width: 0;
+  white-space: nowrap;
 }
 .footer__brand-mark {
   font-family: var(--font-serif);
   font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: 0.14em;
+  font-size: 1.35rem;
+  letter-spacing: 0.12em;
   color: #ffffff;
-  line-height: 1.1;
+  line-height: 1;
 }
 .footer__brand-name {
-  font-size: 0.58rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.26em;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.78);
-  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1;
 }
 .footer__logo {
   display: block;
-  height: 52px;
+  height: 60px;
   width: auto;
   margin-bottom: 0;
   flex-shrink: 0;
 }
 .site-footer .footer__logo {
-  filter: brightness(0) invert(1);
-  opacity: 0.92;
+  opacity: 1;
 }
-@media (min-width: 768px) { .footer__logo { height: 56px; } }
+@media (min-width: 768px) {
+  .footer__logo { height: 68px; }
+  .footer__brand-mark { font-size: 1.5rem; }
+  .footer__brand-name { font-size: 0.78rem; }
+}
 .site-footer a { color: rgba(255,255,255,0.85); transition: color 0.2s; }
 .site-footer a:hover { color: var(--gold-light); }
 .footer-links { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; margin-bottom: 1rem; }
