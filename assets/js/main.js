@@ -79,6 +79,19 @@
 
   form.addEventListener("submit", function (event) {
     event.preventDefault();
+
+    if (window.vsbFormAntispam) {
+      var check = window.vsbFormAntispam.validateContactForm(form);
+      if (!check.ok) {
+        if (check.silent) return;
+        if (status) {
+          status.textContent = check.message;
+          status.className = "form__status is-error";
+        }
+        return;
+      }
+    }
+
     if (status) {
       status.textContent = "送信中です…";
       status.className = "form__status";

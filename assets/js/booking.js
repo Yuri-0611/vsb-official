@@ -435,6 +435,18 @@
         return;
       }
 
+      if (window.vsbFormAntispam) {
+        var check = window.vsbFormAntispam.validateContactForm(els.form);
+        if (!check.ok) {
+          if (check.silent) return;
+          if (els.status) {
+            els.status.textContent = check.message;
+            els.status.className = "form__status is-error";
+          }
+          return;
+        }
+      }
+
       if (els.status) {
         els.status.textContent = "予約を送信しています…";
         els.status.className = "form__status";

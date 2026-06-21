@@ -741,7 +741,8 @@ main { overflow-x: hidden; }
 .form__note { font-size: 0.8125rem; color: var(--gray-600); margin: 0 0 1rem; }
 .form__consent { font-weight: 400 !important; display: flex !important; gap: 0.5rem; align-items: flex-start; }
 .form__consent input { width: auto; margin-top: 0.25rem; }
-.form__honey { position: absolute; left: -9999px; }
+.form__honey-wrap { display: none !important; }
+.form__honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .form__status { margin-top: 1rem; font-size: 0.875rem; }
 .form__status.is-success { color: #0d7a4a; }
 .form__status.is-error { color: #b42318; }

@@ -115,21 +115,23 @@
           <form class="form booking__form" data-booking-form action="https://formsubmit.co/ajax/info@vsb-consulting.jp" method="POST">
             <input type="hidden" name="_subject" value="【VSB】無料相談予約" />
             <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="true" />
             <input type="hidden" name="_next" value="https://vsb-consulting.jp/thanks.html" />
+            <input type="hidden" name="_blacklist" value="+1-,immenseignite.info,guerrillamail.com,mailinator.com" />
             <input type="hidden" name="inquiry_type" value="無料相談予約" />
             <input type="hidden" name="consultation_format" value="" />
             <input type="hidden" name="preferred_date" value="" />
             <input type="hidden" name="preferred_time" value="" />
             <input type="hidden" name="booking_summary" value="" />
-            <input type="text" name="_honey" class="form__honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <div class="form__honey-wrap" aria-hidden="true" style="display:none">
+              <label>Leave empty<input type="text" name="_honey" class="form__honey" tabindex="-1" autocomplete="off" value="" /></label>
+            </div>
             <div class="form__row form__row--2">
-              <label>会社名<input type="text" name="company" required autocomplete="organization" /></label>
-              <label>お名前<input type="text" name="name" required autocomplete="name" /></label>
+              <label>会社名<input type="text" name="company" required minlength="2" autocomplete="organization" /></label>
+              <label>お名前<input type="text" name="name" required minlength="2" autocomplete="name" /></label>
             </div>
             <div class="form__row form__row--2">
               <label>メールアドレス<input type="email" name="email" required autocomplete="email" /></label>
-              <label>電話番号（任意）<input type="tel" name="phone" autocomplete="tel" /></label>
+              <label>電話番号（任意）<input type="tel" name="phone" autocomplete="tel" inputmode="tel" pattern="^0[\d\-]{9,12}$" title="日本国内の電話番号（0から始まる形式）。例：03-1234-5678、090-1234-5678。+1など海外形式は不可。" placeholder="例：090-1234-5678" /></label>
             </div>
             <label>ご相談内容（任意）<textarea name="message" placeholder="採用定着・健康経営・組織開発など、お困りのことを簡単に"></textarea></label>
             <label class="form__consent">
@@ -146,9 +148,11 @@
           <form class="form" data-contact-form action="https://formsubmit.co/ajax/info@vsb-consulting.jp" method="POST">
             <input type="hidden" name="_subject" value="VSBサイトお問い合わせ" />
             <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="true" />
             <input type="hidden" name="_next" value="https://vsb-consulting.jp/thanks.html" />
-            <input type="text" name="_honey" class="form__honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <input type="hidden" name="_blacklist" value="+1-,immenseignite.info,guerrillamail.com,mailinator.com" />
+            <div class="form__honey-wrap" aria-hidden="true" style="display:none">
+              <label>Leave empty<input type="text" name="_honey" class="form__honey" tabindex="-1" autocomplete="off" value="" /></label>
+            </div>
             <label>
               お問い合わせ種別
               <select name="inquiry_type" required>
@@ -157,14 +161,14 @@
               </select>
             </label>
             <div class="form__row form__row--2">
-              <label>会社名<input type="text" name="company" required autocomplete="organization" /></label>
+              <label>会社名<input type="text" name="company" required minlength="2" autocomplete="organization" /></label>
               <label>役職<input type="text" name="title" autocomplete="organization-title" /></label>
             </div>
             <div class="form__row form__row--2">
-              <label>お名前<input type="text" name="name" required autocomplete="name" /></label>
+              <label>お名前<input type="text" name="name" required minlength="2" autocomplete="name" /></label>
               <label>メールアドレス<input type="email" name="email" required autocomplete="email" /></label>
             </div>
-            <label>電話番号（任意）<input type="tel" name="phone" autocomplete="tel" /></label>
+            <label>電話番号（任意）<input type="tel" name="phone" autocomplete="tel" inputmode="tel" pattern="^0[\d\-]{9,12}$" title="日本国内の電話番号（0から始まる形式）。例：03-1234-5678、090-1234-5678。+1など海外形式は不可。" placeholder="例：03-1234-5678" /></label>
             <label>お問い合わせ内容<textarea name="message" placeholder="ご相談内容・ご質問など"></textarea></label>
             <label class="form__consent">
               <input type="checkbox" name="privacy_consent" value="同意済み" required />
@@ -186,6 +190,7 @@
       </div>
     </div>
   </footer>
+  <script src="assets/js/form-antispam.js" defer></script>
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/booking.js" defer></script>
 </body>
