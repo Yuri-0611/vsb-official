@@ -8,10 +8,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="/scan/assets/index-B75osSDc.js"></script>
+    <script type="module" crossorigin src="/scan/assets/index-Basjn98B.js"></script>
     <link rel="stylesheet" crossorigin href="/scan/assets/index-DGN5DTpD.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
+    <script>
+      (function () {
+        var q = new URLSearchParams(location.search);
+        if (q.get('page') === 'admin') location.hash = '#/admin';
+        if (q.get('page') === 'result') location.hash = '#/result';
+        if (/\/scan\/admin\/?$/.test(location.pathname)) {
+          location.replace(location.pathname.replace(/\/admin\/?$/, '/index.html') + '#/admin');
+        }
+      })();
+    </script>
   </body>
 </html>
