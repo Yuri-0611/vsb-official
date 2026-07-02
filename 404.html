@@ -5,8 +5,11 @@
   <script>
     (function () {
       var p = window.location.pathname;
-      if (p.indexOf('/scan/') === 0 && p !== '/scan/index.html' && p !== '/scan/404.html') {
-        window.location.replace('/scan/index.html' + window.location.search + window.location.hash);
+      if (p.indexOf('/scan/') !== 0) return;
+      if (p === '/scan/index.html' || p === '/scan/404.html') return;
+      if (/\.[a-z0-9]+$/i.test(p)) return;
+      if (!p.endsWith('/')) {
+        window.location.replace(p + '/' + window.location.search + window.location.hash);
       }
     })();
   </script>
