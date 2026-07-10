@@ -160,6 +160,7 @@ a {
   background: var(--start-white);
   border: 1px solid var(--start-gray-100);
   box-shadow: var(--start-shadow-sm);
+  -webkit-tap-highlight-color: transparent;
   transition:
     box-shadow 0.2s ease,
     transform 0.2s ease,
@@ -232,12 +233,37 @@ a {
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  background-image: none;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.start-choice__cta::before,
+.start-choice__cta::after {
+  content: none;
+  display: none;
 }
 
 .start-choice--primary .start-choice__cta {
-  background: linear-gradient(180deg, var(--start-teal-light) 0%, var(--start-teal) 100%);
+  background-color: var(--start-teal);
   color: var(--start-white);
   box-shadow: 0 4px 14px rgba(45, 106, 106, 0.22);
+}
+
+.start-choice--primary:hover .start-choice__cta,
+.start-choice--primary:focus-visible .start-choice__cta,
+.start-choice--primary:active .start-choice__cta {
+  background-color: var(--start-teal);
+  background-image: none;
+  box-shadow: 0 4px 14px rgba(45, 106, 106, 0.22);
+}
+
+.start-choice--primary:active .start-choice__cta {
+  box-shadow: 0 2px 10px rgba(45, 106, 106, 0.2);
 }
 
 .start-choice--secondary .start-choice__cta {
