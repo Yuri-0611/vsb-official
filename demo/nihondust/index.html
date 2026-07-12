@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>VSBコンディションスキャン デモ｜日本ダスト様</title>
+<style>
+  :root{
+    --green:#2f6b4f; --green-d:#143b2a; --green-l:#e8f3ed;
+    --teal:#2fae8f; --navy:#274b8a; --warn:#d9822b; --alert:#e0574b;
+    --ink:#1b2420; --muted:#5c6b63; --line:#dbe6df; --bg:#f3f7f4; --card:#fff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Hiragino Sans","Yu Gothic UI","Meiryo",system-ui,sans-serif;
+    line-height:1.6; -webkit-text-size-adjust:100%;}
+  .wrap{max-width:520px; margin:0 auto; padding:0 14px 40px;}
+  .topbar{background:linear-gradient(135deg,var(--green-d),var(--green)); color:#fff;
+    padding:18px 16px calc(18px + env(safe-area-inset-bottom,0)); text-align:center;
+    position:sticky; top:0; z-index:10; box-shadow:0 2px 10px rgba(0,0,0,.12);}
+  .topbar .brand{font-size:12px; letter-spacing:.14em; opacity:.85;}
+  .topbar h1{font-size:17px; margin:3px 0 2px;}
+  .topbar .demo-tag{display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.4);
+    font-size:11px; padding:2px 10px; border-radius:20px; margin-top:4px;}
+  .section-label{display:flex; align-items:center; gap:8px; margin:26px 2px 10px; font-weight:700; color:var(--green-d);}
+  .section-label .n{background:var(--green); color:#fff; width:24px; height:24px; border-radius:50%;
+    display:grid; place-items:center; font-size:13px; flex:none;}
+  .section-label .sub{font-size:11px; color:var(--muted); font-weight:500; margin-left:auto;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:16px; margin:10px 0; box-shadow:0 4px 14px rgba(20,59,42,.05);}
+  .card h2{font-size:15px; margin:0 0 12px; color:var(--green-d);}
+  .card h3{font-size:13px; margin:14px 0 6px; color:var(--green-d);}
+  .hero{background:linear-gradient(150deg,#2fae8f,#2f6b4f); color:#fff; text-align:center; border:none; padding:20px 16px;}
+  .hero .cap{font-size:12px; opacity:.9;}
+  .ring{position:relative; width:150px; height:150px; margin:10px auto 6px;}
+  .ring svg{transform:rotate(-90deg);}
+  .ring .val{position:absolute; inset:0; display:grid; place-items:center;}
+  .ring .val .num{font-size:44px; font-weight:800; line-height:1;}
+  .ring .val .max{font-size:12px; opacity:.85;}
+  .badge-hero{display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.5);
+    padding:4px 16px; border-radius:20px; font-weight:700; font-size:14px;}
+  .radar-box{display:flex; justify-content:center; padding:6px 0;}
+  .legend{display:flex; gap:16px; justify-content:center; font-size:11px; color:var(--muted); margin-top:4px; flex-wrap:wrap;}
+  .legend i{display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:4px; vertical-align:-1px;}
+  .note{font-size:12px; color:var(--muted); margin:6px 0 0;}
+  .ctx{background:var(--green-l); border-color:#c9e0d5;}
+  .ctx p{margin:0; font-size:12.5px; color:#2a4438;}
+  .org-score{display:flex; align-items:center; gap:14px; margin-bottom:6px;}
+  .org-score .big{font-size:40px; font-weight:800; color:var(--green-d); line-height:1;}
+  .org-score .u{font-size:13px; color:var(--muted);}
+  .pill{padding:4px 12px; border-radius:20px; font-size:13px; font-weight:700; color:#fff;}
+  .pill.warn{background:var(--warn);} .pill.good{background:var(--teal);} .pill.alert{background:var(--alert);}
+  .axis-grid{display:grid; grid-template-columns:1fr 1fr; gap:6px 12px; margin-top:12px;}
+  .axis-item{display:flex; justify-content:space-between; font-size:13px; padding:5px 0; border-bottom:1px dashed var(--line);}
+  .axis-item b{color:var(--green-d);}
+  .loss{background:linear-gradient(135deg,#fff4ec,#ffe9d8); border-color:#f0cfa8;}
+  .loss .lbl{font-size:12px; color:var(--warn); font-weight:700;}
+  .loss .yen{font-size:34px; font-weight:800; color:#c0631a; letter-spacing:-.5px; margin:2px 0;}
+  .bar{display:flex; height:26px; border-radius:8px; overflow:hidden; margin:12px 0 6px; font-size:11px; color:#fff; font-weight:700;}
+  .bar .prod{background:var(--teal); display:grid; place-items:center;}
+  .bar .lo{background:var(--warn); display:grid; place-items:center;}
+  .alert-item{display:flex; gap:10px; padding:10px 0; border-bottom:1px solid var(--line);}
+  .alert-item:last-child{border-bottom:none;}
+  .alert-item .ic{flex:none; width:26px; height:26px; border-radius:50%; display:grid; place-items:center; font-size:15px;}
+  .ic.hi{background:#fde8e6; color:var(--alert);} .ic.mid{background:#fdf0e0; color:var(--warn);}
+  .pri-badge{font-size:11px; font-weight:700; padding:1px 8px; border-radius:12px;}
+  .pri-badge.hi{background:#fde8e6; color:var(--alert);} .pri-badge.mid{background:#fdf0e0; color:var(--warn);}
+  .alert-item strong{display:block; font-size:14px; margin:3px 0 2px;}
+  .alert-item p{margin:0; font-size:12.5px; color:var(--muted);}
+  .prio{padding:10px 0; border-bottom:1px solid var(--line);}
+  .prio:last-child{border-bottom:none;}
+  .prio .rk{display:inline-block; background:var(--green); color:#fff; font-size:12px; font-weight:700; border-radius:6px; padding:1px 8px; margin-right:6px;}
+  .prio h3{display:inline; font-size:14px;}
+  .prio p{margin:5px 0 0; font-size:12.5px; color:var(--muted);}
+  .prio p b{color:var(--ink);}
+  ul.support{margin:6px 0 0; padding-left:18px;}
+  ul.support li{font-size:13px; margin:4px 0;}
+  .closing{font-size:12.5px; color:var(--muted); background:var(--green-l); border-radius:10px; padding:10px 12px; margin-top:10px;}
+  .disclaimer{font-size:11px; color:#9aa8a0; text-align:center; margin:22px 6px 0; line-height:1.5;}
+  .flow{display:flex; align-items:center; justify-content:center; gap:6px; font-size:11px; color:var(--muted); margin:14px 0 2px; flex-wrap:wrap;}
+  .flow span{background:#fff; border:1px solid var(--line); border-radius:20px; padding:3px 10px;}
+  .flow .arw{border:none; background:none; color:var(--green);}
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="brand">VSB CONSULTING</div>
+    <h1>コンディションスキャン デモ</h1>
+    <div class="demo-tag">日本ダスト様 向けサンプル</div>
+  </div>
+
+  <div class="wrap">
+    <div class="flow">
+      <span>1分回答</span><span class="arw">→</span><span>個人結果</span><span class="arw">→</span><span>組織で集計</span><span class="arw">→</span><span>経営サマリー</span>
+    </div>
+
+    <article class="card ctx"><p>産業廃棄物の収集運搬・中間処理・資源リサイクルを担うNDKグループ（現業・ドライバー中心の約126名）。早朝からの収集・屋外作業・重量物の取り扱いが多く、CHROとして若手の定着とウェルビーイングを重視。以下は「現業・ドライバー部門40名」でスキャンを実施した想定サンプルです。</p></article>
+
+    <div class="section-label"><span class="n">1</span>個人の結果画面<span class="sub">例：収集運搬ドライバー本人が見る画面</span></div>
+
+    <article class="card hero">
+      <div class="cap">あなたのコンディション</div>
+      <div class="ring">
+        <svg width="150" height="150" viewBox="0 0 150 150">
+          <circle cx="75" cy="75" r="64" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="12"/>
+          <circle id="scoreArc" cx="75" cy="75" r="64" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+        </svg>
+        <div class="val"><div><span class="num">62</span><div class="max">/ 100</div></div></div>
+      </div>
+      <span class="badge-hero">あと少し</span>
+    </article>
+
+    <article class="card">
+      <h2>8軸のバランス</h2>
+      <div class="radar-box"><svg id="radarPersonal" width="300" height="270" viewBox="0 0 300 270"></svg></div>
+      <p class="note">「熱意」「没頭」は高め。早朝勤務や重量物作業が影響しやすい「身体ケア」「回復・エネルギー」に整える余地があります。</p>
+    </article>
+
+    <div class="section-label"><span class="n">2</span>経営サマリー<span class="sub">経営者が見る画面（匿名集計）</span></div>
+
+    <article class="card">
+      <h2>実施概要</h2>
+      <div class="axis-grid" style="grid-template-columns:1fr;">
+        <div class="axis-item"><span>企業名</span><b>日本ダスト株式会社（NDKグループ）</b></div>
+        <div class="axis-item"><span>対象部署</span><b>現業・ドライバー部門（パイロット）</b></div>
+        <div class="axis-item"><span>回答人数</span><b>40名</b></div>
+        <div class="axis-item"><span>集計方法</span><b>匿名集計</b></div>
+        <div class="axis-item"><span>概算年間人件費</span><b>1億8,000万円</b></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <h2>組織コンディション平均</h2>
+      <div class="org-score">
+        <span class="big">58</span><span class="u">/ 100</span>
+        <span class="pill warn" style="margin-left:auto;">やや注意</span>
+      </div>
+      <div class="radar-box"><svg id="radarOrg" width="300" height="270" viewBox="0 0 300 270"></svg></div>
+      <div class="legend">
+        <span><i style="background:#2f6b4f;"></i>自社平均</span>
+        <span><i style="background:#c9b78a;"></i>全国平均</span>
+      </div>
+      <p class="note"><b>平均から見た特徴：</b>使命感による「熱意」「没頭」が支える一方、早朝・屋外・重量作業を反映して「身体ケア」「回復・エネルギー」に改善余地。多拠点のため「つながり・一体感」もばらつきやすい傾向です。</p>
+    </article>
+
+    <article class="card loss">
+      <div class="lbl">年間生産性ロス（簡易試算）</div>
+      <div class="yen">約 1,900万円 / 年</div>
+      <p class="note" style="color:#8a5a24;">回答データと概算年間人件費をもとに簡易試算すると、プレゼンティーズム（出勤しているが本来の力を出せていない状態）により、現業40名で年間約1,900万円相当の生産性ロスが発生している可能性があります。</p>
+      <div class="bar">
+        <div class="prod" style="width:89.4%;">推定パフォーマンス 89%</div>
+        <div class="lo" style="width:10.6%;">ロス 11%</div>
+      </div>
+      <p class="note">※自己申告データに基づく保守的な簡易推計です。会計上の損失を断定するものではありません。</p>
+    </article>
+
+    <article class="card">
+      <h2>リスクアラート</h2>
+      <div class="alert-item">
+        <span class="ic hi">!</span>
+        <div>
+          <span class="pri-badge hi">優先度：高（早めに確認したい）</span>
+          <strong>身体負荷の蓄積（肩・腰）</strong>
+          <p>重量物の積み下ろし・車両乗降・処理現場作業を反映し、身体ケアのスコアが全国平均を下回っています。</p>
+        </div>
+      </div>
+      <div class="alert-item">
+        <span class="ic hi">!</span>
+        <div>
+          <span class="pri-badge hi">優先度：高（早めに確認したい）</span>
+          <strong>睡眠・疲労感の低下</strong>
+          <p>早朝からの収集運搬により回復・エネルギーが低く、繁忙期の疲労蓄積が懸念されます。</p>
+        </div>
+      </div>
+      <div class="alert-item">
+        <span class="ic mid">!</span>
+        <div>
+          <span class="pri-badge mid">優先度：中（状況確認を推奨）</span>
+          <strong>メンタル・安全プレッシャー</strong>
+          <p>安全順守の緊張感が続く現場で、心理的コンディションにやや低下傾向が見られます。</p>
+        </div>
+      </div>
+      <p class="note">回答データ上の傾向であり、個人の状態を断定するものではありません。</p>
+    </article>
+
+    <article class="card">
+      <h2>改善優先度</h2>
+      <div class="prio">
+        <span class="rk">1</span><h3>肩・腰の不調</h3>
+        <p><b>理由：</b>身体ケアのスコアが最も低く、労災・離職リスクにも直結しやすいため</p>
+        <p><b>確認したいこと：</b>積み下ろしや乗降で腰・肩の負担を訴える社員が増えていないか</p>
+      </div>
+      <div class="prio">
+        <span class="rk">2</span><h3>睡眠・疲労感</h3>
+        <p><b>理由：</b>早朝勤務による回復不足が生産性ロスに影響している可能性があるため</p>
+        <p><b>確認したいこと：</b>繁忙期に朝から疲れが残っている現業社員が多い印象はあるか</p>
+      </div>
+      <div class="prio">
+        <span class="rk">3</span><h3>メンタル負荷</h3>
+        <p><b>理由：</b>安全緊張と現場負荷で心理項目に低下傾向が見られるため</p>
+        <p><b>確認したいこと：</b>若手が悩みや不安を相談しやすい環境があるか</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <h2>支援できる可能性のある領域</h2>
+      <ul class="support">
+        <li>重量作業・車両乗降の負担を減らす現場向けストレッチ／身体ケア習慣</li>
+        <li>早朝勤務者の疲労回復・休息の質を高める取り組み</li>
+        <li>多拠点をつなぐ一体感づくり（拠点間コミュニケーション）</li>
+        <li>かわさきSDGs・健康経営の文脈に沿った現場発の課題整理</li>
+      </ul>
+      <p class="closing">就業時間内・週1回20分から始められる実働型の伴走で、現業・ドライバーの定着と安全・一体感を支えます。まずは1拠点・小人数のパイロットから、現在地の可視化と改善の一歩をご一緒できればと思います。</p>
+    </article>
+
+    <p class="disclaimer">本デモは日本ダスト様の業種・規模を想定したサンプル表示例です。実際の結果は回答内容により変わります。<br>本結果は自己申告に基づく参考情報であり、医療診断ではありません。<br>VSB Consulting</p>
+  </div>
+
+<script>
+(function(){
+  var LABELS = ["回復・エネルギー","身体ケア","集中","心理的コンディション","活力","熱意","没頭","つながり・一体感"];
+  var personal = [5.6,4.4,6.8,5.8,6.6,7.4,6.8,6.2];
+  var org = [5,4,6.2,5.2,6,6.8,6.2,5.8];
+  var natl = [5.6,5.5,5.8,5.5,5.4,5.6,5.5,5.4];
+  var arc = document.getElementById('scoreArc');
+  if(arc){ var r=64, c=2*Math.PI*r, score=62; arc.style.strokeDasharray=c; arc.style.strokeDashoffset=c*(1-score/100); }
+  function drawRadar(svgId, series){
+    var svg=document.getElementById(svgId); if(!svg) return;
+    var cx=150, cy=132, R=92, N=8, ns='http://www.w3.org/2000/svg';
+    function pt(i,radius){ var a=-Math.PI/2+i*2*Math.PI/N; return [cx+radius*Math.cos(a), cy+radius*Math.sin(a)]; }
+    [0.25,0.5,0.75,1].forEach(function(f){ var pts=[]; for(var i=0;i<N;i++){var p=pt(i,R*f); pts.push(p[0].toFixed(1)+','+p[1].toFixed(1));}
+      var poly=document.createElementNS(ns,'polygon'); poly.setAttribute('points',pts.join(' ')); poly.setAttribute('fill','none'); poly.setAttribute('stroke','#dbe6df'); poly.setAttribute('stroke-width','1'); svg.appendChild(poly); });
+    for(var i=0;i<N;i++){ var e=pt(i,R); var line=document.createElementNS(ns,'line'); line.setAttribute('x1',cx); line.setAttribute('y1',cy); line.setAttribute('x2',e[0]); line.setAttribute('y2',e[1]); line.setAttribute('stroke','#e4ede8'); line.setAttribute('stroke-width','1'); svg.appendChild(line);
+      var lp=pt(i,R+16); var t=document.createElementNS(ns,'text'); t.setAttribute('x',lp[0]); t.setAttribute('y',lp[1]); t.setAttribute('font-size','9'); t.setAttribute('fill','#5c6b63');
+      t.setAttribute('text-anchor', lp[0]<cx-4?'end':(lp[0]>cx+4?'start':'middle')); t.setAttribute('dominant-baseline', lp[1]<cy-4?'auto':(lp[1]>cy+4?'hanging':'middle'));
+      var short=LABELS[i].replace('・エネルギー','').replace('コンディション','').replace('つながり・一体感','つながり'); t.textContent=short; svg.appendChild(t); }
+    function polyFor(data,stroke,fill){ var pts=[]; for(var i=0;i<N;i++){var p=pt(i,R*(data[i]/10)); pts.push(p[0].toFixed(1)+','+p[1].toFixed(1));}
+      var poly=document.createElementNS(ns,'polygon'); poly.setAttribute('points',pts.join(' ')); poly.setAttribute('fill',fill); poly.setAttribute('stroke',stroke); poly.setAttribute('stroke-width','2'); poly.setAttribute('stroke-linejoin','round'); svg.appendChild(poly); }
+    if(series.natl) polyFor(series.natl,'#c9b78a','rgba(201,183,138,.18)');
+    polyFor(series.main, series.mainStroke, series.mainFill);
+  }
+  drawRadar('radarPersonal', {main:personal, mainStroke:'#2fae8f', mainFill:'rgba(47,174,143,.22)'});
+  drawRadar('radarOrg', {main:org, mainStroke:'#2f6b4f', mainFill:'rgba(47,107,79,.20)', natl:natl});
+})();
+</script>
+</body>
+</html>
