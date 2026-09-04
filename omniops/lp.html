@@ -434,6 +434,77 @@
       max-width: 100%;
     }
 
+    .policy {
+      background: #eef5f6;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .policy-box {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px 22px 24px;
+      box-shadow: 0 8px 28px rgba(13, 92, 99, .06);
+    }
+    .policy-heading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .policy-heading h2 {
+      margin-bottom: 0;
+    }
+    .policy-shield {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      color: var(--teal);
+    }
+    .policy-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 4px;
+      list-style: none;
+    }
+    .policy-item {
+      background: var(--mint);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 14px;
+    }
+    .policy-item .item-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .policy-check {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: var(--teal);
+    }
+    .policy-item h3 {
+      font-size: .92rem;
+      line-height: 1.4;
+      color: var(--teal-deep);
+    }
+    .policy-item p {
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.55;
+      padding-left: 30px;
+    }
+    @media (max-width: 760px) {
+      .policy-list { grid-template-columns: 1fr; }
+      .policy-item p { padding-left: 0; }
+      .policy-box { padding: 22px 16px 18px; }
+    }
+
     .cta-band {
       background: var(--teal-deep);
       color: #fff;
@@ -678,6 +749,53 @@
             <p>マニュアル・保守（任意）</p>
             <span class="price-tag">要お見積もり（ご予算に応じたプランニング）</span>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="policy" id="policy" aria-labelledby="policy-heading">
+      <div class="wrap">
+        <div class="policy-box reveal">
+          <div class="policy-heading">
+            <svg class="policy-shield" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3l7 3v5.5c0 4.4-2.9 8.4-7 9.5-4.1-1.1-7-5.1-7-9.5V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M9.2 12.2l1.9 1.9 3.7-3.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h2 id="policy-heading">セキュリティに対する3つのお約束</h2>
+          </div>
+          <p class="section-lead">OmniOpsでは、お客様の重要な社内データをお守りするため、以下のポリシーを徹底しています。</p>
+          <ul class="policy-list">
+            <li class="policy-item reveal">
+              <div class="item-top">
+                <svg class="policy-check" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M8.2 12.2l2.4 2.4 5.2-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3>秘密保持契約（NDA）の標準締結</h3>
+              </div>
+              <p>無料診断後の具体的なお打ち合わせの前に、必ず秘密保持契約を締結させていただきます。</p>
+            </li>
+            <li class="policy-item reveal reveal-delay-1">
+              <div class="item-top">
+                <svg class="policy-check" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M8.2 12.2l2.4 2.4 5.2-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3>「ダミーデータ」での安全なテスト構築</h3>
+              </div>
+              <p>システムの構築やテスト運用は、個人情報や売上金額を伏せた「ダミーデータ」にて行います。本番の機密情報を直接お預かりすることはありません。</p>
+            </li>
+            <li class="policy-item reveal reveal-delay-2">
+              <div class="item-top">
+                <svg class="policy-check" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M8.2 12.2l2.4 2.4 5.2-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3>作業後24時間以内のデータ完全消去</h3>
+              </div>
+              <p>万が一、テスト環境等の共有でお預かりしたファイルは、納品・検収が完了した時点（または24時間以内）で当方の端末から完全に消去し、ローカル保存は一切行いません。</p>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
