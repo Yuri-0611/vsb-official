@@ -46,17 +46,22 @@
     window.dispatchEvent(new CustomEvent("vsb:intro-done"));
   }
 
-  function skipToDone() {
-    body.classList.remove("intro-pending", "intro-playing", "intro-header-in");
-    body.classList.add("intro-done");
+  function removeOverlay() {
     var overlay = document.getElementById("site-intro");
     if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+  }
+
+  function skipToDone(instant) {
+    body.classList.remove("intro-pending", "intro-playing", "intro-header-in");
+    body.classList.add("intro-done");
+    if (instant) body.classList.add("intro-instant");
+    removeOverlay();
     window.dispatchEvent(new CustomEvent("vsb:intro-done"));
   }
 
+  // Same-session revisit: never leave the white overlay on screen
   if (alreadyPlayed) {
-    body.classList.remove("intro-pending", "intro-playing");
-    body.classList.add("intro-done", "intro-instant");
+    skipToDone(true);
     return;
   }
   if (reduced) {
@@ -282,9 +287,19 @@
       }, 1250);
     };
     img.onerror = function () {
-      skipToDone();
+      running = false;
+      finishIntro();
     };
     img.src = LOGO_SRC;
+
+    // Hard failsafe: never leave users on a blank white overlay
+    window.setTimeout(function () {
+      if (!body.classList.contains("intro-done")) {
+        running = false;
+        cancelAnimationFrame(raf);
+        finishIntro();
+      }
+    }, 8000);
 
     window.addEventListener(
       "resize",
