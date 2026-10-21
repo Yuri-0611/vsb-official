@@ -481,7 +481,6 @@ main { overflow-x: hidden; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
   padding-top: 0.15rem;
 }
 .hero-v2__actions {
@@ -490,26 +489,6 @@ main { overflow-x: hidden; }
   justify-content: center;
   gap: 0.75rem;
   margin-bottom: 0;
-}
-.hero-v2__trust {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  font-size: 0.8125rem;
-  color: var(--gray-600);
-}
-.hero-v2__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.75rem;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  font-weight: 600;
-  color: var(--navy);
 }
 @media (max-width: 639px) {
   .hero-v2__br { display: none; }
