@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OmniOps｜メニュー（名刺QR）</title>
+  <meta name="description" content="OmniOps — サービス紹介または無料業務プロセス診断をお選びください。" />
+  <meta name="robots" content="noindex,nofollow" />
+  <style>
+    :root {
+      --teal: #0d5c63;
+      --teal-deep: #0a454b;
+      --mint: #9fe3e0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100dvh;
+      font-family: "Yu Gothic", "YuGothic", "Hiragino Sans", "Noto Sans JP", Meiryo, sans-serif;
+      background: linear-gradient(165deg, #0d5c63 0%, #0a454b 55%, #163a40 100%);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 18px calc(28px + env(safe-area-inset-bottom));
+    }
+    .card {
+      width: min(420px, 100%);
+      text-align: center;
+    }
+    .brand {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      margin-bottom: 8px;
+    }
+    .lead {
+      font-size: .95rem;
+      opacity: .9;
+      line-height: 1.55;
+      margin-bottom: 28px;
+    }
+    .choices {
+      display: grid;
+      gap: 12px;
+    }
+    a.choice {
+      display: block;
+      text-decoration: none;
+      border-radius: 14px;
+      padding: 18px 16px;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    a.choice:active { transform: scale(.98); }
+    a.choice.primary {
+      background: #fff;
+      color: var(--teal-deep);
+      box-shadow: 0 8px 24px rgba(0,0,0,.18);
+    }
+    a.choice.secondary {
+      background: rgba(255,255,255,.1);
+      color: #fff;
+      border: 1px solid rgba(159,227,224,.45);
+    }
+    a.choice .title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    a.choice .desc {
+      font-size: .8rem;
+      opacity: .85;
+      line-height: 1.45;
+    }
+    a.choice.primary .desc { opacity: .7; }
+    .note {
+      margin-top: 18px;
+      font-size: .75rem;
+      opacity: .7;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <p class="brand">OmniOps</p>
+    <p class="lead">どちらをご覧になりますか？</p>
+    <div class="choices">
+      <a class="choice primary" href="./">
+        <div class="title">サービス紹介を見る</div>
+        <div class="desc">実績・進め方・無料診断の流れ</div>
+      </a>
+      <a class="choice secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">
+        <div class="title">無料診断フォームへ</div>
+        <div class="desc">入力2〜3分</div>
+      </a>
+    </div>
+    <p class="note">名刺のQRからのメニューです</p>
+  </main>
+</body>
+</html>

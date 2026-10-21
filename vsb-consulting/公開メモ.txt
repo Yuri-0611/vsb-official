@@ -21,6 +21,13 @@ VSB 法人向けサイト（vsb-consulting.com 想定）
 ■ Google Analytics
 ・測定IDを取得後、各HTMLの `head` に gtag を追加する。
 
+■ 二本柱（VSB / OmniOps）
+・親ブランドは VSB Consulting（紺）。OmniOps はティール緑で別導線。
+・トップFV：見出し「二本の柱」＋ Pillar 表記は VSB（健康経営・組織開発）／ OmniOps（業務改善・仕組み化）。
+・料金前に緑バンド。ナビ・フッタ全ページに OmniOps → `/omniops/`。
+・`/omniops/` は緑LP（上部に VSB 親バー）。名刺QR用メニューは `/omniops/menu.html`。
+・組織の料金・サービスと OmniOps の訴求は混ぜない。
+
 ■ 更新
 ・事例追加時はトップまたはサービスページへ追記する。
 ・料金は10万・15万の2プランを公開。5万プランは契約時の特別提案のみ（非公開）。
