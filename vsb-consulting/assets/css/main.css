@@ -283,10 +283,13 @@ main { overflow-x: hidden; }
 .hero-v2__grid {
   display: grid;
   gap: 2.5rem;
-  align-items: center;
+  align-items: start;
 }
-@media (min-width: 900px) {
-  .hero-v2__grid { grid-template-columns: 1fr 0.85fr; gap: 3rem; }
+.hero-v2__copy {
+  max-width: 52rem;
+}
+.hero-v2--no-photo .hero-pillars {
+  max-width: 40rem;
 }
 .hero-v2__eyebrow {
   display: inline-block;
