@@ -1892,6 +1892,84 @@ section#flow .flow-item__num {
 .brand-split__cta {
   margin-top: 1.25rem;
 }
+
+/* Menu-style dual choices (aligned with omniops/menu.html) */
+.brand-split--menu {
+  align-items: stretch;
+}
+.brand-split--menu .brand-split__col {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 1.75rem 1.35rem 1.5rem;
+}
+.brand-split--menu .brand-split__name {
+  margin-bottom: 0.35rem;
+}
+.brand-split--menu .brand-split__tag {
+  margin-bottom: 1rem;
+}
+.brand-split__path {
+  margin: 0 0 1.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--gray-600);
+  line-height: 1.5;
+}
+.brand-split__col--vsb .brand-split__path { color: var(--navy-soft); }
+.brand-split__col--omni .brand-split__path { color: var(--omni-teal-deep); }
+.brand-split__choices {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+.choice {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 14px;
+  padding: 1rem 1rem 0.95rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.choice:hover { transform: translateY(-2px); }
+.choice:active { transform: scale(0.985); }
+.choice__title {
+  display: block;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.2rem;
+  line-height: 1.35;
+}
+.choice__desc {
+  display: block;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  opacity: 0.78;
+}
+.choice--vsb {
+  background: var(--navy);
+  color: var(--white);
+  box-shadow: 0 8px 22px rgba(15, 35, 65, 0.18);
+}
+.choice--vsb .choice__desc { opacity: 0.82; }
+.choice--omni {
+  background: var(--omni-teal);
+  color: var(--white);
+  box-shadow: 0 8px 22px rgba(13, 92, 99, 0.2);
+}
+.choice--omni .choice__desc { opacity: 0.85; }
+.choice--ghost {
+  background: rgba(15, 35, 65, 0.04);
+  color: var(--navy);
+  border: 1px solid rgba(15, 35, 65, 0.16);
+}
+.choice--ghost-omni {
+  background: rgba(13, 92, 99, 0.06);
+  color: var(--omni-teal-deep);
+  border: 1px solid rgba(13, 92, 99, 0.22);
+}
 .brand-split__ask {
   display: inline-flex;
   align-items: baseline;

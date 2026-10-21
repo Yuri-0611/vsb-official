@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/main.css?v=20260322" />
+  <link rel="stylesheet" href="assets/css/main.css?v=20260322b" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -222,40 +222,44 @@
       </div>
     </section>
 
-    <!-- Service flow: half / half -->
+    <!-- Service flow: menu-style choices -->
     <section class="section" id="services" aria-labelledby="service-title">
       <div class="container">
         <div class="section__head" data-reveal>
           <p class="section__label">Service Flow</p>
-          <h2 class="section__title" id="service-title">二本の柱、それぞれの進め方</h2>
-          <p class="section__lead">課題の種類に合わせて、最適な柱から伴走します。</p>
+          <h2 class="section__title" id="service-title">どちらから進めますか？</h2>
+          <p class="section__lead">課題に合わせて、どちらの柱からでもどうぞ。</p>
         </div>
-        <div class="brand-split" data-reveal>
+        <div class="brand-split brand-split--menu" data-reveal>
           <div class="brand-split__col brand-split__col--vsb">
-            <div class="brand-split__head">
-              <span class="brand-split__name">VSB</span>
-              <span class="brand-split__tag">健康経営・組織開発</span>
+            <p class="brand-split__name">VSB</p>
+            <p class="brand-split__tag">健康経営・組織開発</p>
+            <p class="brand-split__path" aria-label="進め方">相談 → 診断 → 設計 → 伴走</p>
+            <div class="brand-split__choices">
+              <a class="choice choice--vsb" href="service.html">
+                <span class="choice__title">サービス紹介を見る</span>
+                <span class="choice__desc">認定伴走・組織開発の概要</span>
+              </a>
+              <a class="choice choice--ghost" href="flow.html">
+                <span class="choice__title">支援の流れ</span>
+                <span class="choice__desc">相談から伴走までの手順</span>
+              </a>
             </div>
-            <ol class="brand-split__steps">
-              <li><span class="brand-split__step-num">01</span><div><h3>無料相談</h3><p>課題・優先順位をヒアリング。</p></div></li>
-              <li><span class="brand-split__step-num">02</span><div><h3>現状診断</h3><p>離職・制度・健康経営の論点を整理。</p></div></li>
-              <li><span class="brand-split__step-num">03</span><div><h3>認定・組織開発</h3><p>健康経営と組織づくりを一体で設計。</p></div></li>
-              <li><span class="brand-split__step-num">04</span><div><h3>継続伴走</h3><p>現場に根づくまで月次で並走。</p></div></li>
-            </ol>
-            <p class="brand-split__cta"><a class="btn btn--outline btn--sm" href="service.html">サービス詳細</a> <a class="btn btn--outline btn--sm" href="flow.html">支援の流れ</a></p>
           </div>
           <div class="brand-split__col brand-split__col--omni">
-            <div class="brand-split__head">
-              <span class="brand-split__name">OmniOps</span>
-              <span class="brand-split__tag">業務改善・仕組み化</span>
+            <p class="brand-split__name">OmniOps</p>
+            <p class="brand-split__tag">業務改善・仕組み化</p>
+            <p class="brand-split__path" aria-label="進め方">診断 → 試作 → 構築 → 定着</p>
+            <div class="brand-split__choices">
+              <a class="choice choice--omni" href="omniops/">
+                <span class="choice__title">サービス紹介を見る</span>
+                <span class="choice__desc">実績・進め方・無料診断</span>
+              </a>
+              <a class="choice choice--ghost-omni" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">
+                <span class="choice__title">無料診断フォームへ</span>
+                <span class="choice__desc">入力 2〜3分</span>
+              </a>
             </div>
-            <ol class="brand-split__steps">
-              <li><span class="brand-split__step-num">01</span><div><h3>無料診断</h3><p>重い表とかかっている時間をヒアリング。</p></div></li>
-              <li><span class="brand-split__step-num">02</span><div><h3>プロトタイプ</h3><p>数日で動くデモを提示。</p></div></li>
-              <li><span class="brand-split__step-num">03</span><div><h3>本番構築</h3><p>短期で自動化を納品（要お見積もり）。</p></div></li>
-              <li><span class="brand-split__step-num">04</span><div><h3>定着</h3><p>マニュアル・保守で現場に根づかせる。</p></div></li>
-            </ol>
-            <p class="brand-split__cta"><a class="btn btn--omni-solid btn--sm" href="omniops/">OmniOps詳細</a></p>
           </div>
         </div>
       </div>
