@@ -2,877 +2,266 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OmniOps｜Excelのコピペ・転記ミスをゼロに｜VSB Consulting</title>
-  <meta name="description" content="手作業の集計を6時間→10分へ。現場の表を壊れない運用に整えるOmniOps。Venture Sports Base（VSB Consulting）の業務改善事業。" />
-  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="../assets/js/analytics-config.js"></script>
+  <script src="../assets/js/analytics.js"></script>
+  <title>OmniOps｜業務改善・仕組み化｜VSB Consulting</title>
+  <meta name="description" content="Excelのコピペ・転記ミスを仕組みでゼロに。現場の表を壊れない運用へ整えるOmniOps。VSB Consultingの業務改善事業。" />
   <link rel="canonical" href="https://vsb-consulting.jp/omniops/" />
-  <style>
-    :root {
-      --ink: #14282c;
-      --muted: #5a6b70;
-      --teal: #0d5c63;
-      --teal-deep: #0a454b;
-      --mint: #e8f4f5;
-      --line: #d5e3e5;
-      --paper: #f7fafb;
-      --white: #ffffff;
-      --accent: #c45c26;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: "Yu Gothic", "YuGothic", "Hiragino Sans", "Noto Sans JP", Meiryo, sans-serif;
-      color: var(--ink);
-      background: var(--paper);
-      line-height: 1.65;
-      font-size: 16px;
-      overflow-x: hidden;
-    }
-    a { color: var(--teal); }
-    .wrap { width: min(1080px, calc(100% - 32px)); margin: 0 auto; }
-
-    /* reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .reveal.is-in {
-      opacity: 1;
-      transform: none;
-    }
-    .reveal-delay-1 { transition-delay: .1s; }
-    .reveal-delay-2 { transition-delay: .2s; }
-    .reveal-delay-3 { transition-delay: .3s; }
-    .reveal-delay-4 { transition-delay: .4s; }
-
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
-    @keyframes pulse-soft {
-      0%, 100% { box-shadow: 0 8px 24px rgba(0,0,0,.18); }
-      50% { box-shadow: 0 8px 28px rgba(13,92,99,.35); }
-    }
-    @keyframes count-glow {
-      from { opacity: 0; transform: scale(.92); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    @keyframes arrow-move {
-      0%, 100% { transform: translateX(0); opacity: .7; }
-      50% { transform: translateX(6px); opacity: 1; }
-    }
-
-    .vsb-parent-bar {
-      background: #0f2341;
-      color: rgba(255,255,255,.88);
-      font-size: .78rem;
-    }
-    .vsb-parent-bar .inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 8px 0;
-      flex-wrap: wrap;
-    }
-    .vsb-parent-bar a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-    }
-    .vsb-parent-bar a:hover { text-decoration: underline; }
-    .vsb-parent-bar .tag {
-      opacity: .75;
-    }
-    .site-header {
-      background: rgba(255,255,255,.92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--line);
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
-    .site-header .inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 0;
-    }
-    .logo {
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: var(--teal-deep);
-      text-decoration: none;
-      letter-spacing: .04em;
-    }
-    .header-cta {
-      background: var(--teal);
-      color: #fff !important;
-      text-decoration: none;
-      font-size: .82rem;
-      font-weight: 700;
-      padding: 9px 13px;
-      border-radius: 8px;
-    }
-    .header-cta:hover { background: var(--teal-deep); }
-
-    .hero {
-      background: linear-gradient(165deg, #0d5c63 0%, #0a454b 55%, #163a40 100%);
-      color: #fff;
-      padding: 52px 0 58px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero .wrap {
-      width: min(1080px, calc(100% - 32px));
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
-      gap: 40px;
-      align-items: center;
-    }
-    .hero-copy {
-      max-width: 34em;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 280px; height: 280px;
-      right: -60px; top: -80px;
-      background: radial-gradient(circle, rgba(159,227,224,.22), transparent 70%);
-      animation: floaty 6s ease-in-out infinite;
-      pointer-events: none;
-    }
-    .hero-kicker {
-      display: inline-block;
-      font-size: .75rem;
-      letter-spacing: .1em;
-      border: 1px solid rgba(255,255,255,.35);
-      border-radius: 999px;
-      padding: 4px 12px;
-      margin-bottom: 16px;
-    }
-    .hero h1 {
-      font-size: clamp(1.5rem, 4.2vw, 2.15rem);
-      line-height: 1.35;
-      font-weight: 800;
-      margin-bottom: 14px;
-    }
-    .hero .lead {
-      font-size: .98rem;
-      opacity: .92;
-      max-width: 28em;
-      margin-bottom: 26px;
-    }
-
-    .impact {
-      margin: 0;
-    }
-    .impact-title {
-      font-size: .78rem;
-      letter-spacing: .08em;
-      opacity: .8;
-      margin-bottom: 10px;
-    }
-    .impact-money {
-      background: linear-gradient(135deg, rgba(159,227,224,.22), rgba(255,255,255,.08));
-      border: 1px solid rgba(159,227,224,.45);
-      border-radius: 16px;
-      padding: 18px 18px;
-      margin-bottom: 10px;
-      animation: count-glow .8s ease both;
-    }
-    .impact-money .label {
-      font-size: .75rem;
-      opacity: .8;
-      letter-spacing: .06em;
-      margin-bottom: 4px;
-    }
-    .impact-money .val {
-      font-size: clamp(1.6rem, 3.5vw, 2rem);
-      font-weight: 800;
-      color: #9fe3e0;
-      line-height: 1.2;
-      letter-spacing: .02em;
-    }
-    .impact-money .sub {
-      font-size: .8rem;
-      opacity: .85;
-      margin-top: 6px;
-    }
-    .before-after {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 8px;
-      align-items: stretch;
-      margin-bottom: 8px;
-    }
-    .ba-card {
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.22);
-      border-radius: 14px;
-      padding: 14px 10px;
-      text-align: center;
-      animation: count-glow .8s ease both;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .ba-card .label {
-      font-size: .68rem;
-      opacity: .75;
-      letter-spacing: .08em;
-      margin-bottom: 4px;
-    }
-    .ba-card .val {
-      font-size: 1.25rem;
-      font-weight: 800;
-      line-height: 1.25;
-    }
-    .ba-card.after {
-      background: rgba(159,227,224,.18);
-      border-color: rgba(159,227,224,.45);
-      animation-delay: .12s;
-    }
-    .ba-card.after .val { color: #9fe3e0; }
-    .ba-card.hours {
-      animation-delay: .2s;
-      width: 100%;
-    }
-    .ba-card.hours .val { color: #ffe0b8; font-size: 1.15rem; }
-    .ba-arrow {
-      font-size: 1.2rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: arrow-move 1.4s ease-in-out infinite;
-    }
-    @media (max-width: 860px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
-      }
-      .hero-copy { max-width: none; }
-      .hero .lead { max-width: none; }
-      .btn-note, .btn-reassure { max-width: none; }
-    }
-    @media (max-width: 560px) {
-      .before-after {
-        grid-template-columns: 1fr auto 1fr;
-      }
-      .ba-card { padding: 12px 8px; }
-      .ba-card .val { font-size: 1.1rem; }
-      .ba-card.hours .val { font-size: 1.05rem; }
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: #fff;
-      color: var(--teal-deep) !important;
-      text-decoration: none;
-      font-weight: 800;
-      padding: 14px 22px;
-      border-radius: 10px;
-      font-size: .98rem;
-      animation: pulse-soft 2.8s ease-in-out infinite;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-note {
-      margin-top: 12px;
-      font-size: .8rem;
-      opacity: .8;
-      line-height: 1.55;
-      max-width: 28em;
-    }
-    .btn-reassure {
-      margin-top: 10px;
-      font-size: .78rem;
-      opacity: .78;
-      line-height: 1.5;
-      max-width: 30em;
-    }
-    .impact-money .case {
-      font-size: .72rem;
-      opacity: .72;
-      margin-top: 8px;
-      line-height: 1.45;
-    }
-    .cta-reassure {
-      margin: 14px auto 0;
-      max-width: 34em;
-      font-size: .82rem;
-      opacity: .88;
-      line-height: 1.55;
-    }
-    .cta-reassure strong {
-      font-weight: 700;
-      opacity: 1;
-    }
-
-    section { padding: 48px 0; }
-    section h2 {
-      font-size: clamp(1.25rem, 3vw, 1.6rem);
-      color: var(--teal-deep);
-      margin-bottom: 6px;
-      text-align: center;
-    }
-    .section-lead {
-      text-align: center;
-      color: var(--muted);
-      margin-bottom: 26px;
-      font-size: .95rem;
-    }
-
-    .pain-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    .pain-card {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 18px 14px;
-      text-align: center;
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .pain-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(13,92,99,.1);
-    }
-    .pain-icon {
-      width: 44px; height: 44px;
-      margin: 0 auto 10px;
-      border-radius: 12px;
-      background: var(--mint);
-      color: var(--teal);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      font-weight: 800;
-    }
-    .pain-card p {
-      font-size: .88rem;
-      color: var(--ink);
-      line-height: 1.5;
-    }
-
-    .reason-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-    .reason {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 20px 18px;
-      transition: transform .25s ease;
-    }
-    .reason:hover { transform: translateY(-3px); }
-    .reason .num {
-      display: inline-block;
-      background: var(--teal);
-      color: #fff;
-      font-size: .72rem;
-      font-weight: 800;
-      padding: 3px 10px;
-      border-radius: 999px;
-      margin-bottom: 10px;
-    }
-    .reason h3 {
-      font-size: 1rem;
-      margin-bottom: 6px;
-    }
-    .reason p {
-      color: var(--muted);
-      font-size: .88rem;
-      line-height: 1.55;
-    }
-
-    .flow-track {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      position: relative;
-    }
-    .flow-track::before {
-      content: "";
-      position: absolute;
-      top: 28px;
-      left: 8%;
-      right: 8%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--line), var(--teal), var(--line));
-      opacity: .6;
-      z-index: 0;
-    }
-    .step {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 16px 12px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-    .step .badge {
-      width: 40px; height: 40px;
-      margin: 0 auto 10px;
-      border-radius: 50%;
-      background: var(--teal);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: .9rem;
-    }
-    .step h3 {
-      font-size: .92rem;
-      margin-bottom: 4px;
-    }
-    .step p {
-      font-size: .8rem;
-      color: var(--muted);
-      line-height: 1.45;
-    }
-    .price-tag {
-      display: inline-block;
-      margin-top: 8px;
-      background: #fff4ec;
-      color: var(--accent);
-      font-size: .68rem;
-      font-weight: 700;
-      padding: 4px 8px;
-      border-radius: 6px;
-      line-height: 1.35;
-      max-width: 100%;
-    }
-
-    .policy {
-      background: #eef5f6;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .policy-box {
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 28px 22px 24px;
-      box-shadow: 0 8px 28px rgba(13, 92, 99, .06);
-    }
-    .policy-heading {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-    .policy-heading h2 {
-      margin-bottom: 0;
-    }
-    .policy-shield {
-      width: 36px;
-      height: 36px;
-      flex-shrink: 0;
-      color: var(--teal);
-    }
-    .policy-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 4px;
-      list-style: none;
-    }
-    .policy-item {
-      background: var(--mint);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 16px 14px;
-    }
-    .policy-item .item-top {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-    .policy-check {
-      width: 22px;
-      height: 22px;
-      flex-shrink: 0;
-      margin-top: 1px;
-      color: var(--teal);
-    }
-    .policy-item h3 {
-      font-size: .92rem;
-      line-height: 1.4;
-      color: var(--teal-deep);
-    }
-    .policy-item p {
-      font-size: .82rem;
-      color: var(--muted);
-      line-height: 1.55;
-      padding-left: 30px;
-    }
-    @media (max-width: 760px) {
-      .policy-list { grid-template-columns: 1fr; }
-      .policy-item p { padding-left: 0; }
-      .policy-box { padding: 22px 16px 18px; }
-    }
-
-    .cta-band {
-      background: var(--teal-deep);
-      color: #fff;
-      padding: 44px 0;
-      text-align: center;
-    }
-    .cta-band h2 {
-      color: #fff;
-      margin-bottom: 8px;
-    }
-    .cta-band > .wrap > p {
-      opacity: .9;
-      margin-bottom: 20px;
-      font-size: .95rem;
-    }
-    .cta-band .btn {
-      min-width: min(100%, 280px);
-    }
-
-    .mobile-cta { display: none; }
-
-    .site-footer {
-      background: #102226;
-      color: rgba(255,255,255,.85);
-      padding: 28px 0 22px;
-      font-size: .88rem;
-      text-align: center;
-    }
-    .site-footer .brand {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 6px;
-    }
-    .site-footer a { color: #9fe3e0; text-decoration: none; }
-    .site-footer .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px 18px;
-      justify-content: center;
-      margin-top: 10px;
-    }
-    .copy {
-      margin-top: 16px;
-      font-size: .72rem;
-      opacity: .65;
-    }
-
-    @media (max-width: 760px) {
-      .pain-grid { grid-template-columns: 1fr 1fr; }
-      .reason-grid { grid-template-columns: 1fr; }
-      .flow-track { grid-template-columns: 1fr 1fr; }
-      .flow-track::before { display: none; }
-    }
-    @media (max-width: 480px) {
-      .wrap { width: calc(100% - 24px); }
-      .pain-grid { grid-template-columns: 1fr; }
-      .before-after { grid-template-columns: 1fr auto 1fr; gap: 6px; }
-      .ba-arrow { animation: none; }
-      .flow-track { grid-template-columns: 1fr; }
-      .impact-money { padding: 16px 14px; }
-      .impact-money .val { font-size: 1.4rem; }
-      .hero { padding: 32px 0 40px; }
-      .hero h1 { font-size: 1.42rem; margin-bottom: 12px; }
-      .hero .lead { font-size: .92rem; margin-bottom: 18px; }
-      .btn {
-        width: 100%;
-        padding: 15px 18px;
-        font-size: 1rem;
-      }
-      .header-cta { padding: 10px 14px; font-size: .8rem; }
-      section { padding: 40px 0; }
-      .cta-band { padding: 40px 0 44px; }
-      body { padding-bottom: 72px; }
-      .mobile-cta {
-        display: block;
-        position: fixed;
-        left: 0; right: 0; bottom: 0;
-        z-index: 30;
-        padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-        background: rgba(16, 34, 38, .94);
-        backdrop-filter: blur(8px);
-        border-top: 1px solid rgba(159,227,224,.25);
-      }
-      .mobile-cta a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        background: #fff;
-        color: var(--teal-deep) !important;
-        text-decoration: none;
-        font-weight: 800;
-        font-size: .95rem;
-        padding: 14px 16px;
-        border-radius: 10px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
-      .btn, .ba-arrow, .hero::before, .ba-card { animation: none; }
-    }
-  </style>
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vsb-consulting.jp/omniops/" />
+  <meta property="og:title" content="OmniOps｜業務改善・仕組み化｜VSB Consulting" />
+  <meta property="og:description" content="Excelの転記・集計ミスを仕組みでゼロに。現場の表を壊れない運用へ。" />
+  <meta property="og:locale" content="ja_JP" />
+  <link rel="icon" href="../assets/img/vsb-logo-mark.png" type="image/png" />
+  <link rel="apple-touch-icon" href="../assets/img/vsb-logo-mark.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://vsb-consulting.jp/"},
+    {"@type":"ListItem","position":2,"name":"OmniOps","item":"https://vsb-consulting.jp/omniops/"}
+  ]}
+  </script>
 </head>
 <body>
-  <!-- 全CTA同一フォーム: https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform -->
-  <div class="vsb-parent-bar">
-    <div class="wrap inner">
-      <a href="../index.html">← VSB Consulting</a>
-      <span class="tag">Venture Sports Base の事業です｜組織づくりは本サイトへ</span>
-    </div>
-  </div>
+  <a class="skip-link" href="#main">メインコンテンツへスキップ</a>
+
   <header class="site-header">
-    <div class="wrap inner">
-      <a class="logo" href="#top">OmniOps</a>
-      <a class="header-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料診断</a>
+    <div class="container site-header__inner">
+      <a class="brand brand--logo" href="../index.html"><img class="brand__logo" src="../assets/img/vsb-logo-mark.png" alt="" width="70" height="64" decoding="async" /><span class="brand__text"><span class="brand__mark">VSB</span><span class="brand__name">Consulting</span></span></a>
+      <nav class="site-nav" aria-label="メインナビゲーション">
+        <a href="../service.html">サービス</a>
+        <a href="../flow.html">支援の流れ</a>
+        <a href="../instructor.html">代表紹介</a>
+        <a href="../company.html">会社概要</a>
+        <a href="../faq.html">FAQ</a>
+        <a class="site-nav__omni is-active" href="./" aria-current="page">OmniOps</a>
+        <a href="../contact.html">お問い合わせ</a>
+        <a class="site-nav__cta site-nav__cta--omni" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料診断</a>
+      </nav>
+      <div class="site-header__tools">
+        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav"><span aria-hidden="true"></span><span class="sr-only">メニューを開く</span></button>
+      </div>
     </div>
+    <nav class="mobile-nav" id="mobile-nav" data-mobile-nav aria-label="モバイルナビゲーション">
+      <a href="../service.html">サービス</a>
+      <a href="../flow.html">支援の流れ</a>
+      <a href="../instructor.html">代表紹介</a>
+      <a href="../company.html">会社概要</a>
+      <a href="../faq.html">FAQ</a>
+      <a class="site-nav__omni is-active" href="./" aria-current="page">OmniOps</a>
+      <a href="../contact.html">お問い合わせ</a>
+      <a class="mobile-nav__cta mobile-nav__cta--omni" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料診断</a>
+    </nav>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="wrap">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <p class="hero-kicker">業務改善・自動化</p>
-            <h1>Excelのコピペと転記ミスを、<br />仕組みでゼロに。</h1>
-            <p class="lead">いま使っている表を、誰が触っても壊れない運用へ。<br />削減できるのは時間だけではありません。</p>
-            <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料で業務プロセス診断</a>
-            <p class="btn-note">入力2〜3分。表の状況を教えていただくだけで、改善余地を無料で診断します。</p>
-            <p class="btn-reassure">強引な営業は一切ありません。診断結果の共有のみです。</p>
-          </div>
-
-          <div class="impact" aria-label="効率化の実績イメージ">
-            <p class="impact-title">実績ベースの効果イメージ</p>
-            <div class="impact-money">
-              <div class="label">年間の人件費換算で</div>
-              <div class="val">約500万円を削減</div>
-              <p class="sub">Excel依存の回線管理・日次集計を、Web／スプシ完結の仕組みへ再設計した実案件</p>
-              <p class="case">※約23名規模・北米拠点のグローバル通信・Tech企業／SIM回線運用・集計自動化の実績</p>
-            </div>
-            <div class="before-after">
-              <div class="ba-card">
-                <div class="label">BEFORE</div>
-                <div class="val">6時間</div>
-              </div>
-              <div class="ba-arrow" aria-hidden="true">→</div>
-              <div class="ba-card after">
-                <div class="label">AFTER</div>
-                <div class="val">10分</div>
-              </div>
-            </div>
-            <div class="ba-card hours">
-              <div class="label">YEARLY</div>
-              <div class="val">2,400時間分の工数削減</div>
-            </div>
-          </div>
+  <main id="main">
+    <section class="page-hero page-hero--omni" aria-labelledby="omni-title">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span>/</span><span aria-current="page">OmniOps</span></nav>
+        <p class="section__label">Pillar 02 · OmniOps</p>
+        <h1 id="omni-title">Excelのコピペと転記ミスを、<br />仕組みでゼロに。</h1>
+        <p class="page-hero__lead">いま使っている表を、誰が触っても壊れない運用へ。VSBのもう一本の柱として、現場の業務改善・仕組み化を伴走します。</p>
+        <div class="page-hero__actions">
+          <a class="btn btn--omni-solid btn--lg" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料で業務プロセス診断</a>
+          <a class="btn btn--outline" href="#flow">進め方を見る</a>
         </div>
+        <p class="page-hero__note">入力2〜3分。強引な営業はありません。診断結果の共有のみです。</p>
       </div>
     </section>
 
-    <section id="pain">
-      <div class="wrap">
-        <h2 class="reveal">こんな状態、ありませんか</h2>
-        <p class="section-lead reveal reveal-delay-1">現場あるあるを、仕組みで止めます。</p>
+    <section class="omni-metrics" aria-label="効果イメージ">
+      <div class="container omni-metrics__grid" data-reveal>
+        <div class="omni-metrics__item">
+          <span class="omni-metrics__label">BEFORE → AFTER</span>
+          <strong>6時間 → 10分</strong>
+          <span>日次集計の工数イメージ</span>
+        </div>
+        <div class="omni-metrics__item">
+          <span class="omni-metrics__label">YEARLY</span>
+          <strong>約2,400時間</strong>
+          <span>工数削減のイメージ</span>
+        </div>
+        <div class="omni-metrics__item">
+          <span class="omni-metrics__label">CASE</span>
+          <strong>約500万円</strong>
+          <span>年間人件費換算の削減実績イメージ</span>
+        </div>
+      </div>
+      <p class="container omni-metrics__footnote" data-reveal>※約23名規模・北米拠点の通信／Tech企業における、SIM回線運用・集計自動化の実案件をもとにした効果イメージです。</p>
+    </section>
+
+    <section class="section section--gray" id="pain" aria-labelledby="pain-title">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="section__label">Challenges</p>
+          <h2 class="section__title" id="pain-title">こんな状態、ありませんか</h2>
+          <p class="section__lead">現場あるあるを、仕組みで止めます。</p>
+        </div>
         <div class="pain-grid">
-          <div class="pain-card reveal">
-            <div class="pain-icon">📋</div>
-            <p>毎月の集計が<br />コピペ地獄</p>
-          </div>
-          <div class="pain-card reveal reveal-delay-1">
-            <div class="pain-icon">📁</div>
-            <p>「最終版」が<br />何個もある</p>
-          </div>
-          <div class="pain-card reveal reveal-delay-2">
-            <div class="pain-icon">👤</div>
-            <p>担当が休むと<br />業務が止まる</p>
-          </div>
-          <div class="pain-card reveal">
-            <div class="pain-icon">💥</div>
-            <p>セル直編集で<br />数式が壊れる</p>
-          </div>
-          <div class="pain-card reveal reveal-delay-1">
-            <div class="pain-icon">🔄</div>
-            <p>システム導入後も<br />結局Excel</p>
-          </div>
-          <div class="pain-card reveal reveal-delay-2">
-            <div class="pain-icon">⏱</div>
-            <p>DXより先に<br />今日の表が壊れない方が大事</p>
-          </div>
+          <article class="pain-card" data-reveal>
+            <h3>毎月の集計がコピペ地獄</h3>
+            <p>表をまたいだ転記が続き、月末だけ異常に忙しい。</p>
+          </article>
+          <article class="pain-card" data-reveal>
+            <h3>「最終版」が何個もある</h3>
+            <p>どれが正か分からず、確認と差し戻しが増える。</p>
+          </article>
+          <article class="pain-card" data-reveal>
+            <h3>担当が休むと業務が止まる</h3>
+            <p>属人化した表運用が、休みや退職で一気に崩れる。</p>
+          </article>
+          <article class="pain-card" data-reveal>
+            <h3>セル直編集で数式が壊れる</h3>
+            <p>誰かが触るたびに計算が崩れ、復旧に時間が溶ける。</p>
+          </article>
+          <article class="pain-card" data-reveal>
+            <h3>システム導入後も結局Excel</h3>
+            <p>本システムと表が二重運用になり、手間が増える。</p>
+          </article>
+          <article class="pain-card" data-reveal>
+            <h3>DXより先に、今日の表</h3>
+            <p>大きな刷新の前に、いまの運用を壊れない形へ。</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="why" style="background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-      <div class="wrap">
-        <h2 class="reveal">OmniOpsが選ばれる理由</h2>
-        <p class="section-lead reveal reveal-delay-1">速く作る。でも、現場には壊さないものだけ渡す。</p>
-        <div class="reason-grid">
-          <article class="reason reveal">
-            <span class="num">01</span>
+    <section class="section" id="why" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="section__label">Why OmniOps</p>
+          <h2 class="section__title" id="why-title">OmniOpsが選ばれる理由</h2>
+          <p class="section__lead">速く作る。でも、現場には壊さないものだけ渡す。</p>
+        </div>
+        <div class="omni-reasons">
+          <article class="omni-reason" data-reveal>
+            <span class="omni-reason__num">01</span>
             <h3>壊れない設計</h3>
-            <p>一覧は見るだけ。変更はメニュー経由。履歴は残す。北米の通信・Tech現場で実証した型です。</p>
+            <p>一覧は見るだけ。変更はメニュー経由。履歴は残す。現場で実証した型です。</p>
           </article>
-          <article class="reason reveal reveal-delay-1">
-            <span class="num">02</span>
+          <article class="omni-reason" data-reveal>
+            <span class="omni-reason__num">02</span>
             <h3>動くものを見せる</h3>
             <p>無料診断と並行して、数日以内にプロトタイプ。画面で「楽になる」を確認してから本番へ。</p>
           </article>
-          <article class="reason reveal reveal-delay-2">
-            <span class="num">03</span>
-            <h3>AI×人の品質ゲート</h3>
-            <p>AIで速く作る。納品前は品質保証15項目を人が通過させない限り出しません。</p>
+          <article class="omni-reason" data-reveal>
+            <span class="omni-reason__num">03</span>
+            <h3>AI × 人の品質ゲート</h3>
+            <p>AIで速く作る。納品前は品質保証項目を人が通さない限り出しません。</p>
           </article>
-          <article class="reason reveal reveal-delay-3">
-            <span class="num">04</span>
+          <article class="omni-reason" data-reveal>
+            <span class="omni-reason__num">04</span>
             <h3>Excel文化を活かす</h3>
-            <p>捨てない。GASや入力制限で「触ってよい／だめ」を分け、配車・工程・在庫に適用します。</p>
+            <p>捨てない。入力制限や自動化で「触ってよい／だめ」を分け、配車・工程・在庫に適用します。</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="flow">
-      <div class="wrap">
-        <h2 class="reveal">4ステップで進む</h2>
-        <p class="section-lead reveal reveal-delay-1">まずは無料診断から。</p>
-        <div class="flow-track">
-          <div class="step reveal">
-            <div class="badge">1</div>
-            <h3>無料診断</h3>
-            <p>重い表と時間をヒアリング</p>
-          </div>
-          <div class="step reveal reveal-delay-1">
-            <div class="badge">2</div>
-            <h3>プロトタイプ</h3>
-            <p>数日で動くデモを提示</p>
-          </div>
-          <div class="step reveal reveal-delay-2">
-            <div class="badge">3</div>
-            <h3>本番構築</h3>
-            <p>短期で自動化を納品</p>
-            <span class="price-tag">要お見積もり（ご予算に応じたプランニング）</span>
-          </div>
-          <div class="step reveal reveal-delay-3">
-            <div class="badge">4</div>
-            <h3>定着</h3>
-            <p>マニュアル・保守（任意）</p>
-            <span class="price-tag">要お見積もり（ご予算に応じたプランニング）</span>
-          </div>
+    <section class="section section--gray" id="flow" aria-labelledby="flow-title">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="section__label">Flow</p>
+          <h2 class="section__title" id="flow-title">4ステップで進む</h2>
+          <p class="section__lead">まずは無料診断から。画面で効果を確認してから本番へ進みます。</p>
+        </div>
+        <div class="flow-list">
+          <article class="flow-item" data-reveal>
+            <div class="flow-item__num" aria-hidden="true">01</div>
+            <div class="flow-item__content">
+              <h3>STEP 01｜無料診断</h3>
+              <p>重い表とかかっている時間をヒアリング。改善余地を無料で整理します。</p>
+            </div>
+          </article>
+          <article class="flow-item" data-reveal>
+            <div class="flow-item__num" aria-hidden="true">02</div>
+            <div class="flow-item__content">
+              <h3>STEP 02｜プロトタイプ</h3>
+              <p>数日で動くデモを提示。「楽になる」を画面で確認してから次へ。</p>
+            </div>
+          </article>
+          <article class="flow-item" data-reveal>
+            <div class="flow-item__num" aria-hidden="true">03</div>
+            <div class="flow-item__content">
+              <h3>STEP 03｜本番構築</h3>
+              <p>短期で自動化を納品。ご予算に応じてプランニングします（要お見積もり）。</p>
+            </div>
+          </article>
+          <article class="flow-item" data-reveal>
+            <div class="flow-item__num" aria-hidden="true">04</div>
+            <div class="flow-item__content">
+              <h3>STEP 04｜定着</h3>
+              <p>マニュアル・保守（任意）。現場に根づくまで並走します。</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="policy" id="policy" aria-labelledby="policy-heading">
-      <div class="wrap">
-        <div class="policy-box reveal">
-          <div class="policy-heading">
-            <svg class="policy-shield" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 3l7 3v5.5c0 4.4-2.9 8.4-7 9.5-4.1-1.1-7-5.1-7-9.5V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-              <path d="M9.2 12.2l1.9 1.9 3.7-3.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <h2 id="policy-heading">セキュリティに対する3つのお約束</h2>
-          </div>
-          <p class="section-lead">OmniOpsでは、お客様の重要な社内データをお守りするため、以下のポリシーを徹底しています。</p>
-          <ul class="policy-list">
-            <li class="policy-item reveal">
-              <div class="item-top">
-                <svg class="policy-check" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
-                  <path d="M8.2 12.2l2.4 2.4 5.2-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <h3>秘密保持契約（NDA）の標準締結</h3>
-              </div>
-              <p>無料診断後の具体的なお打ち合わせの前に、必ず秘密保持契約を締結させていただきます。</p>
-            </li>
-            <li class="policy-item reveal reveal-delay-1">
-              <div class="item-top">
-                <svg class="policy-check" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
-                  <path d="M8.2 12.2l2.4 2.4 5.2-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <h3>「ダミーデータ」での安全なテスト構築</h3>
-              </div>
-              <p>システムの構築やテスト運用は、個人情報や売上金額を伏せた「ダミーデータ」にて行います。本番の機密情報を直接お預かりすることはありません。</p>
-            </li>
-            <li class="policy-item reveal reveal-delay-2">
-              <div class="item-top">
-                <svg class="policy-check" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/>
-                  <path d="M8.2 12.2l2.4 2.4 5.2-5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <h3>作業後24時間以内のデータ完全消去</h3>
-              </div>
-              <p>万が一、テスト環境等の共有でお預かりしたファイルは、納品・検収が完了した時点（または24時間以内）で当方の端末から完全に消去し、ローカル保存は一切行いません。</p>
-            </li>
-          </ul>
+    <section class="section" id="policy" aria-labelledby="policy-title">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <p class="section__label">Security</p>
+          <h2 class="section__title" id="policy-title">セキュリティに対する3つのお約束</h2>
+          <p class="section__lead">お客様の重要な社内データを守るため、以下を徹底しています。</p>
+        </div>
+        <div class="omni-policy" data-reveal>
+          <article class="omni-policy__item">
+            <h3>秘密保持契約（NDA）の標準締結</h3>
+            <p>無料診断後の具体的なお打ち合わせの前に、必ず秘密保持契約を締結します。</p>
+          </article>
+          <article class="omni-policy__item">
+            <h3>ダミーデータでの安全なテスト構築</h3>
+            <p>構築・テストは個人情報や売上金額を伏せたダミーデータで行います。本番の機密を直接お預かりしません。</p>
+          </article>
+          <article class="omni-policy__item">
+            <h3>作業後24時間以内のデータ完全消去</h3>
+            <p>共有いただいたファイルは、納品・検収完了時点（または24時間以内）で端末から完全消去します。</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="cta-band" id="contact">
-      <div class="wrap reveal">
-        <h2>いちばん重い「1枚の表」を教えてください</h2>
+    <section class="cta-final cta-final--omni" aria-labelledby="cta-omni-title">
+      <div class="container" data-reveal>
+        <h2 id="cta-omni-title">いちばん重い「1枚の表」を<br />教えてください</h2>
         <p>企業名／作業／かかっている時間／理想 — 入力2〜3分</p>
-        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料で業務プロセス診断</a>
-        <p class="cta-reassure">表の状況をお送りいただくだけで、改善余地を無料診断します。<br /><strong>強引な営業は一切ありません。</strong>結果の共有のみです。</p>
+        <div class="cta-final__actions">
+          <a class="btn btn--omni-solid btn--lg" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料で業務プロセス診断</a>
+          <a class="btn btn--ghost" href="../service.html">VSB（健康経営・組織開発）を見る</a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="wrap">
-      <div class="brand">OmniOps</div>
-      <p>代表　亀井 宥吏</p>
-      <div class="links">
-        <a href="tel:08098936328">080-9893-6328</a>
-        <a href="mailto:omniops@vsb-consulting.jp">omniops@vsb-consulting.jp</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料診断</a>
+    <div class="site-footer__main">
+      <div class="container site-footer__grid">
+        <div>
+          <div class="footer__brand"><img class="footer__logo" src="../assets/img/vsb-logo-mark-light.png" alt="" width="68" height="60" decoding="async" /><span class="footer__brand-text"><span class="footer__brand-mark">VSB</span><span class="footer__brand-name">Consulting</span></span></div>
+          <p>二本の柱：VSB（健康経営・組織開発）と OmniOps（業務改善）<br />横浜・神奈川エリアの中小企業を支援</p>
+          <p style="margin-top:1rem;"><a href="mailto:omniops@vsb-consulting.jp">omniops@vsb-consulting.jp</a><br /><a href="tel:08098936328">080-9893-6328</a></p>
+        </div>
+        <div>
+          <nav class="footer-links" aria-label="フッターナビゲーション">
+            <a href="../service.html">サービス</a>
+            <a href="../company.html">会社概要</a>
+            <a class="footer-links__omni" href="./">OmniOps</a>
+            <a href="../contact.html">お問い合わせ</a>
+            <a href="../privacy.html">プライバシーポリシー</a>
+          </nav>
+          <small>© 2026 Venture Sports Base</small>
+        </div>
       </div>
-      <p class="copy">© OmniOps　料金はご予算に応じてお見積もりします</p>
+    </div>
+    <div class="site-footer__bottom">
+      <div class="container">OmniOps は VSB Consulting の業務改善事業です。</div>
     </div>
   </footer>
-
-  <div class="mobile-cta" aria-label="スマホ用の無料診断ボタン">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料で業務プロセス診断</a>
-  </div>
-
-  <script>
-    (function () {
-      var nodes = document.querySelectorAll(".reveal");
-      if (!("IntersectionObserver" in window)) {
-        nodes.forEach(function (el) { el.classList.add("is-in"); });
-        return;
-      }
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-in");
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
-      nodes.forEach(function (el) { io.observe(el); });
-    })();
-  </script>
+  <script src="../assets/js/main.js" defer></script>
 </body>
 </html>
