@@ -1412,3 +1412,171 @@ section#flow .flow-item__num {
   background: var(--omni-mint);
   color: var(--omni-teal-deep);
 }
+
+/* ========== Brand split (VSB | OmniOps) ========== */
+.brand-split {
+  display: grid;
+  gap: 1.5rem;
+}
+@media (min-width: 860px) {
+  .brand-split {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+}
+.brand-split__col {
+  min-width: 0;
+  padding: 1.35rem 1.35rem 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+.brand-split__col--vsb {
+  border-top: 3px solid var(--navy);
+  background: linear-gradient(180deg, var(--blue-soft) 0%, var(--white) 42%);
+}
+.brand-split__col--omni {
+  border-top: 3px solid var(--omni-teal);
+  background: linear-gradient(180deg, var(--omni-mint) 0%, var(--white) 42%);
+}
+.brand-split__head {
+  margin-bottom: 1.15rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--line);
+}
+.brand-split__name {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+}
+.brand-split__col--vsb .brand-split__name { color: var(--navy); }
+.brand-split__col--omni .brand-split__name { color: var(--omni-teal); }
+.brand-split__tag {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--gray-600);
+}
+.brand-split__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+.brand-split__list li {
+  padding: 0;
+}
+.brand-split__list strong {
+  display: block;
+  font-size: 0.9375rem;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+.brand-split__list span {
+  display: block;
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.brand-split__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.brand-split__steps li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.65rem;
+  align-items: start;
+}
+.brand-split__step-num {
+  font-family: var(--font-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding-top: 0.15rem;
+}
+.brand-split__col--vsb .brand-split__step-num { color: var(--navy); }
+.brand-split__col--omni .brand-split__step-num { color: var(--omni-teal); }
+.brand-split__steps h3 {
+  margin: 0 0 0.2rem;
+  font-size: 0.9375rem;
+  color: var(--ink);
+}
+.brand-split__steps p {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.brand-split__cta {
+  margin-top: 1.25rem;
+}
+.brand-split__ask {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.brand-split__ask strong {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  letter-spacing: 0.06em;
+  color: var(--omni-teal-deep);
+}
+.brand-split__ask span {
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+.pillar-bar__item--omni .pillar-bar__title { color: #9fe3e0; }
+.pillar-bar__item--omni .pillar-bar__desc { color: rgba(255,255,255,0.72); }
+.pillar-bar__item--omni .pillar-bar__icon { color: #9fe3e0; }
+
+.pricing-split .brand-split__col { height: 100%; }
+.pricing-split__body { font-size: 0.875rem; color: var(--ink-soft); line-height: 1.65; }
+.pricing-split__body p { margin: 0 0 0.75rem; }
+.pricing-split__price {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 0.75rem;
+}
+.brand-split__col--omni .pricing-split__price { color: var(--omni-teal-deep); }
+
+.cta-final--dual .cta-final__actions { gap: 1rem; }
+.cta-final__pair {
+  display: grid;
+  gap: 1rem;
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  text-align: left;
+}
+@media (min-width: 700px) {
+  .cta-final__pair { grid-template-columns: 1fr 1fr; }
+}
+.cta-final__card {
+  padding: 1.15rem 1.25rem;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.cta-final__card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1rem;
+  color: var(--white);
+}
+.cta-final__card p {
+  margin: 0 0 0.85rem;
+  font-size: 0.8125rem;
+  color: rgba(255,255,255,0.78);
+}
+.cta-final__card .btn { width: 100%; justify-content: center; }
