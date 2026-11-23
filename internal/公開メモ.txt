@@ -1,3 +1,5 @@
+【2026-11 更新】本番に載るのはリポジトリ直下の site/ だけ。GitHub Actions が site/ を GitHub Pages に配信する。このメモ、vsb-consulting/、demo/、名刺、議事録などは internal/ にあり、サイトには出ない。GitHub のリポジトリ自体は公開のままなので、internal/ は github.com 上では読める。
+
 VSB 法人向けサイト（vsb-consulting.com 想定）
 
 ■ ローカル確認
