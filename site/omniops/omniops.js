@@ -86,6 +86,7 @@
     slot.innerHTML = "";
     slot.appendChild(video);
     slot.classList.add("is-ready");
+    return video;
   }
 
   function probeVideo() {
@@ -105,26 +106,165 @@
       });
   }
 
+  function getVideoEl(slot) {
+    return slot ? slot.querySelector("video") : null;
+  }
+
   function setupVideoSlot() {
     var slot = document.querySelector("[data-video-slot]");
-    if (!slot) return;
+    if (!slot) return Promise.resolve(null);
 
-    // Static HTML already ships the player when the file is present.
     if (slot.querySelector("video")) {
       slot.classList.add("is-ready");
+      return Promise.resolve(slot.querySelector("video"));
+    }
+
+    return probeVideo().then(function () {
+      return upgradeVideo(slot);
+    });
+  }
+
+  function setupVideoModal() {
+    var dialog = document.querySelector("[data-video-dialog]");
+    var home = document.querySelector("[data-video-home]");
+    var slot = document.querySelector("[data-video-slot]");
+    var mount = document.querySelector("[data-video-mount]");
+    var openers = document.querySelectorAll("[data-video-open]");
+    var closer = document.querySelector("[data-video-close]");
+
+    if (!dialog || !home || !slot || !mount || !openers.length) return;
+
+    var supportsDialog =
+      typeof dialog.showModal === "function" &&
+      typeof HTMLDialogElement !== "undefined";
+
+    if (!supportsDialog) {
+      document.documentElement.classList.add("oo-no-dialog");
       return;
     }
 
-    // Prefer HEAD, then ranged GET. If the host rejects probes, still render
-    // because omniops.mp4 ships with the page.
-    probeVideo().then(function () {
-      upgradeVideo(slot);
+    document.documentElement.classList.add("oo-has-dialog");
+
+    var lastOpener = null;
+
+    function ensureVideo() {
+      var video = getVideoEl(slot) || getVideoEl(mount);
+      if (video) return video;
+      return upgradeVideo(slot);
+    }
+
+    function moveVideoTo(target) {
+      var video = ensureVideo();
+      if (!video) return null;
+      if (video.parentElement !== target) {
+        target.appendChild(video);
+      }
+      return video;
+    }
+
+    function openModal(opener) {
+      lastOpener = opener || null;
+      var video = moveVideoTo(mount);
+      if (!dialog.open) {
+        dialog.showModal();
+      }
+      if (video) {
+        var playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(function () {});
+        }
+      }
+    }
+
+    function closeModal() {
+      var video = getVideoEl(mount) || getVideoEl(slot);
+      if (video) {
+        video.pause();
+        try {
+          video.currentTime = video.currentTime;
+        } catch (e) {}
+      }
+      moveVideoTo(slot);
+      if (dialog.open) {
+        dialog.close();
+      }
+      if (lastOpener && typeof lastOpener.focus === "function") {
+        lastOpener.focus();
+      }
+    }
+
+    openers.forEach(function (opener) {
+      opener.addEventListener("click", function (event) {
+        event.preventDefault();
+        openModal(opener);
+      });
+    });
+
+    if (closer) {
+      closer.addEventListener("click", function () {
+        closeModal();
+      });
+    }
+
+    dialog.addEventListener("click", function (event) {
+      if (event.target === dialog) {
+        closeModal();
+      }
+    });
+
+    dialog.addEventListener("cancel", function (event) {
+      event.preventDefault();
+      closeModal();
+    });
+
+    dialog.addEventListener("close", function () {
+      var video = getVideoEl(mount);
+      if (video) {
+        video.pause();
+        moveVideoTo(slot);
+      }
+    });
+  }
+
+  function setupHashScroll() {
+    if (window.location.hash !== "#video") return;
+    var target = document.getElementById("video");
+    if (!target) return;
+    window.setTimeout(function () {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
+  }
+
+  function setupMockTabs() {
+    document.querySelectorAll("[data-mock-tabs]").forEach(function (root) {
+      var tabs = root.querySelectorAll("[data-mock-tab]");
+      var panels = root.querySelectorAll("[data-mock-panel]");
+      if (!tabs.length || !panels.length) return;
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          var key = tab.getAttribute("data-mock-tab");
+          tabs.forEach(function (t) {
+            var on = t === tab;
+            t.classList.toggle("is-active", on);
+            t.setAttribute("aria-selected", on ? "true" : "false");
+          });
+          panels.forEach(function (panel) {
+            var on = panel.getAttribute("data-mock-panel") === key;
+            panel.classList.toggle("is-active", on);
+          });
+        });
+      });
     });
   }
 
   ready(function () {
     setupMenu();
     setupReveal();
-    setupVideoSlot();
+    setupVideoSlot().then(function () {
+      setupVideoModal();
+    });
+    setupMockTabs();
+    setupHashScroll();
   });
 })();
