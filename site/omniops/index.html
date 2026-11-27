@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=JetBrains+Mono:ital,wght@0,500;0,700;1,700&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="omniops.css?v=20261127a" />
+  <link rel="stylesheet" href="omniops.css?v=20261127b" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -51,17 +51,17 @@
         },
         "areaServed": ["神奈川県", "東京都", "埼玉県"],
         "url": "https://vsb-consulting.jp/omniops/",
-        "description": "GoogleスプレッドシートとGoogle Apps Scriptを活用し、中小企業の現場業務を仕組み化するサービス。"
+        "description": "GoogleスプレッドシートとGoogle Apps Scriptで、中小企業の現場業務を仕組み化するサービス。"
       },
       {
         "@type": "FAQPage",
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Excelやスプレッドシートを捨てる必要はありますか？",
+            "name": "いまのスプレッドシートを捨てる必要は？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "ありません。いま使っている表の文化を活かしつつ、入力は専用パネル、計算エリアは保護する運用へ整えます。"
+              "text": "ありません。使い慣れたシートを土台に整えます。"
             }
           },
           {
@@ -69,15 +69,23 @@
             "name": "無料診断では何をしますか？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "いちばん重い表とかかっている手間を伺い、改善余地を整理して共有します。入力は2〜3分です。"
+              "text": "いちばん重い表を伺い、改善の方向を整理して共有します。"
             }
           },
           {
             "@type": "Question",
-            "name": "データの扱いは安全ですか？",
+            "name": "データは安全ですか？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "具体的な打合せの前にNDAを標準で締結します。構築はダミーデータで行い、共有ファイルは納品・検収後（または24時間以内）に消去します。"
+              "text": "NDAを標準締結。構築はダミーデータ、共有ファイルは納品後に消去します。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "対応エリアは？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "神奈川・東京・埼玉。オンラインも可。"
             }
           }
         ]
@@ -155,17 +163,14 @@
           <div class="oo-hero__body">
             <div class="oo-row-num" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span></div>
             <div class="oo-hero__content">
-              <p class="oo-hero__eyebrow">名刺の問いへの答えは、こちらです</p>
+              <p class="oo-hero__eyebrow">名刺の続きは、こちらです</p>
               <div class="oo-selected">
                 <h1 id="hero-title">担当者が休んでも、<br />業務が止まらない理由</h1>
-                <p class="oo-selected__lead">
-                  OmniOpsは、Googleスプレッドシート＋Google Apps Scriptで中小企業の現場業務を仕組み化します。
-                  スタッフはセルを直接いじらず専用パネルから入力。計算エリアは保護するので、普段使いでも表が壊れにくくなります。
-                </p>
+                <p class="oo-selected__lead">Googleスプレッドシート＋専用入力パネルで、現場の表を仕組み化します。</p>
               </div>
               <div class="oo-hero__actions oo-cta-row">
                 <a class="oo-btn oo-btn--solid" href="#video">1分動画を見る</a>
-                <a class="oo-btn oo-btn--ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料で業務診断</a>
+                <a class="oo-btn oo-btn--ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">15分相談を申し込む</a>
               </div>
             </div>
           </div>
@@ -178,7 +183,6 @@
         <div class="oo-section__head" data-reveal>
           <p class="oo-kicker">01 / VIDEO</p>
           <h2 id="video-title">1分動画で解説</h2>
-          <p>「担当者が休むと止まる業務」が、なぜ仕組みで回り続けるのか。短い動画で全体像をお伝えします。</p>
         </div>
         <div class="oo-video" data-reveal>
           <div class="oo-video__frame is-ready" data-video-slot>
@@ -201,46 +205,25 @@
     <section class="oo-section" id="pain" aria-labelledby="pain-title">
       <div class="oo-wrap">
         <div class="oo-section__head" data-reveal>
-          <p class="oo-kicker">02 / PAIN → FIX</p>
-          <h2 id="pain-title">現場のつまずきを、仕組みでほどく</h2>
-          <p>属人化した表、転記ミス、休むと止まる業務。OmniOpsは「新しい巨大システム」ではなく、いまのスプレッドシートを壊れない運用へ整えます。</p>
+          <p class="oo-kicker">02 / BEFORE → AFTER</p>
+          <h2 id="pain-title">よくある悩み → OmniOps</h2>
         </div>
-        <div class="oo-pain-grid">
-          <article class="oo-pain" data-reveal>
-            <span class="oo-pain__label oo-pain__label--bad">BEFORE</span>
-            <h3>担当が休むと、業務が止まる</h3>
-            <p>配車や日次の締めが、特定の人の頭と手元のファイルにしかない。</p>
-            <div class="oo-pain__arrow" aria-hidden="true">↓</div>
-            <span class="oo-pain__label oo-pain__label--good">AFTER</span>
-            <h3>手順と入力がパネルに残る</h3>
-            <p>誰が触っても同じ流れ。休んでも、次の人が迷わず続けられます。</p>
+        <div class="oo-pain-grid oo-pain-grid--compact">
+          <article class="oo-pain oo-pain--pair" data-reveal>
+            <h3>担当が休むと止まる</h3>
+            <p>入力パネルに手順が残る</p>
           </article>
-          <article class="oo-pain" data-reveal>
-            <span class="oo-pain__label oo-pain__label--bad">BEFORE</span>
-            <h3>コピペ・転記で数字がズレる</h3>
-            <p>月末だけ別ファイルへ写す。最終版が複数あり、どれが正しいか分からない。</p>
-            <div class="oo-pain__arrow" aria-hidden="true">↓</div>
-            <span class="oo-pain__label oo-pain__label--good">AFTER</span>
-            <h3>入力は一箇所、計算は保護</h3>
-            <p>専用パネルから入力し、計算エリアはロック。誤操作で式が壊れにくくなります。</p>
+          <article class="oo-pain oo-pain--pair" data-reveal>
+            <h3>転記・コピペでズレる</h3>
+            <p>入力は一箇所、計算は保護</p>
           </article>
-          <article class="oo-pain" data-reveal>
-            <span class="oo-pain__label oo-pain__label--bad">BEFORE</span>
-            <h3>その人しか分からないExcel</h3>
-            <p>色分けと隠し列の意味が口伝。後任が触ると一気に崩れる。</p>
-            <div class="oo-pain__arrow" aria-hidden="true">↓</div>
-            <span class="oo-pain__label oo-pain__label--good">AFTER</span>
-            <h3>見ると変えるを分ける</h3>
-            <p>一覧は見るだけ、変更はメニュー経由。現場の言葉で操作できる形にします。</p>
+          <article class="oo-pain oo-pain--pair" data-reveal>
+            <h3>その人しか分からない表</h3>
+            <p>見ると変えるを分ける</p>
           </article>
-          <article class="oo-pain" data-reveal>
-            <span class="oo-pain__label oo-pain__label--bad">BEFORE</span>
-            <h3>大きな刷新はハードルが高い</h3>
-            <p>基幹入替えは予算も期間も重い。でも今の表のままでは不安が残る。</p>
-            <div class="oo-pain__arrow" aria-hidden="true">↓</div>
-            <span class="oo-pain__label oo-pain__label--good">AFTER</span>
-            <h3>いまのシートから始められる</h3>
-            <p>使い慣れたスプレッドシートを土台に、必要なところだけ仕組み化します。</p>
+          <article class="oo-pain oo-pain--pair" data-reveal>
+            <h3>大きな刷新は重い</h3>
+            <p>いまのスプレッドシートから</p>
           </article>
         </div>
       </div>
@@ -250,8 +233,7 @@
       <div class="oo-wrap">
         <div class="oo-section__head" data-reveal>
           <p class="oo-kicker">03 / STRENGTHS</p>
-          <h2 id="strengths-title">OmniOpsの3つの強み</h2>
-          <p>名刺の裏面と同じ、導入メリットです。</p>
+          <h2 id="strengths-title">3つの強み</h2>
         </div>
         <div class="oo-sheet oo-strengths" data-reveal>
           <div class="oo-chrome__top">
@@ -269,22 +251,19 @@
           <div class="oo-strengths__row">
             <div class="oo-strengths__num" aria-hidden="true">01</div>
             <div class="oo-strengths__body">
-              <h3>1枚のスプレッドシートで完結</h3>
-              <p>現場が使い慣れたシートを土台に、入力・集計・確認までをひとつの場所にまとめます。</p>
+              <h3>二重入力をなくし、転記ミスと残業を大幅削減</h3>
             </div>
           </div>
           <div class="oo-strengths__row">
             <div class="oo-strengths__num" aria-hidden="true">02</div>
             <div class="oo-strengths__body">
-              <h3>現場に合わせて柔軟に改修可</h3>
-              <p>業種や帳票のクセに合わせて項目や画面を調整。机上の標準パッケージではなく、現場起点で組みます。</p>
+              <h3>高額なシステムに、現場を合わせるストレスなし</h3>
             </div>
           </div>
           <div class="oo-strengths__row">
             <div class="oo-strengths__num" aria-hidden="true">03</div>
             <div class="oo-strengths__body">
-              <h3>導入後の運用・改善も丸投げ</h3>
-              <p>作って終わりにしません。使い始めてからの調整や改善も、まとめてご相談いただけます。</p>
+              <h3>IT担当不在でも、導入後の運用・改善まで伴走</h3>
             </div>
           </div>
         </div>
@@ -296,67 +275,24 @@
         <div class="oo-section__head" data-reveal>
           <p class="oo-kicker">04 / FLOW</p>
           <h2 id="flow-title">導入の流れ</h2>
-          <p>まずは無料診断から。動く形を確認してから本番へ進みます。</p>
         </div>
-        <div class="oo-steps">
+        <div class="oo-steps oo-steps--compact">
           <article class="oo-step" data-reveal>
             <h3>無料診断</h3>
-            <p>いちばん重い表と、かかっている手間をヒアリング。改善余地を整理して共有します。</p>
+            <p>重い表をヒアリング</p>
           </article>
           <article class="oo-step" data-reveal>
             <h3>プロトタイプ</h3>
-            <p>実際の画面イメージで「現場が楽になるか」を確認してから、本番の範囲を決めます。</p>
+            <p>画面で確認</p>
           </article>
           <article class="oo-step" data-reveal>
             <h3>本番構築</h3>
-            <p>GAS・入力パネル・保護設定などを組み、現場で回る形に整えて納品します。</p>
+            <p>パネルと保護を実装</p>
           </article>
           <article class="oo-step" data-reveal>
             <h3>定着・改善</h3>
-            <p>マニュアルや簡易保守（任意）。使い始めてからの改修も並走できます。</p>
+            <p>使いながら伴走</p>
           </article>
-        </div>
-
-        <div class="oo-sample" data-reveal aria-label="サンプル配車台帳（ダミーデータ）">
-          <div class="oo-sample__bar">
-            <span>サンプル｜配車台帳（ダミー）</span>
-            <span class="oo-sample__tag">架空データです</span>
-          </div>
-          <table>
-            <thead>
-              <tr>
-                <th>日付</th>
-                <th>車両</th>
-                <th>コース</th>
-                <th>ドライバー</th>
-                <th>状態</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>2026-11-24</td>
-                <td>デモ号-01</td>
-                <td>横浜北ルート</td>
-                <td>山田（仮）</td>
-                <td>配車済</td>
-              </tr>
-              <tr>
-                <td>2026-11-24</td>
-                <td>デモ号-02</td>
-                <td>川崎臨海</td>
-                <td>佐藤（仮）</td>
-                <td>積込中</td>
-              </tr>
-              <tr>
-                <td>2026-11-25</td>
-                <td>デモ号-03</td>
-                <td>相模原便</td>
-                <td>鈴木（仮）</td>
-                <td>未割当</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="oo-sample__note">※ 実在の取引先・車両・人名ではありません。入力は専用パネル、この一覧は参照用、という分け方のイメージです。</p>
         </div>
       </div>
     </section>
@@ -369,32 +305,20 @@
         </div>
         <div class="oo-faq" data-reveal>
           <details open>
-            <summary>どんな会社・業務向けですか？</summary>
-            <p>運送の配車、飲食の日次・仕入、在庫や回線管理など、Excel／スプレッドシート文化が残る中小企業の現場向けです。従業員規模の目安は10〜50名ですが、それ以外もご相談ください。</p>
-          </details>
-          <details>
-            <summary>Excelやスプレッドシートを捨てる必要はありますか？</summary>
-            <p>ありません。いまの表を活かしつつ、入力は専用パネル、計算エリアは保護する運用へ整えます。</p>
+            <summary>いまのスプレッドシートを捨てる必要は？</summary>
+            <p>ありません。使い慣れたシートを土台に整えます。</p>
           </details>
           <details>
             <summary>無料診断では何をしますか？</summary>
-            <p>いちばん重い表とかかっている手間を伺い、改善余地を整理して共有します。フォーム入力は2〜3分です。強引な営業はありません。</p>
-          </details>
-          <details>
-            <summary>料金はどう決まりますか？</summary>
-            <p>表の複雑さ・対象範囲・納期によりお見積もりします。まずは無料診断で範囲を一緒に整理します。</p>
+            <p>いちばん重い表を伺い、改善の方向を整理して共有します。</p>
           </details>
           <details>
             <summary>データは安全ですか？</summary>
-            <p>具体打合せの前にNDAを標準締結します。構築はダミーデータで行い、共有ファイルは納品・検収後（または24時間以内）に消去します。</p>
+            <p>NDAを標準締結。構築はダミーデータ、共有ファイルは納品後に消去します。</p>
           </details>
           <details>
             <summary>対応エリアは？</summary>
-            <p>神奈川県（横浜中心）・東京都・埼玉県。オンライン支援も可能です。</p>
-          </details>
-          <details>
-            <summary>VSBの健康経営支援と一緒に頼めますか？</summary>
-            <p>可能です。組織づくり（VSB）と業務の仕組み化（OmniOps）を、役割を分けて並走できます。</p>
+            <p>神奈川・東京・埼玉。オンラインも可。</p>
           </details>
         </div>
       </div>
@@ -403,10 +327,11 @@
     <section class="oo-final" id="contact" aria-labelledby="contact-title">
       <div class="oo-wrap">
         <div class="oo-final__panel" data-reveal>
-          <h2 id="contact-title">まずは、いちばん重い表を教えてください</h2>
-          <p>無料の業務プロセス診断（入力2〜3分）から始められます。内容を見て、必要なら次の打合せをご案内します。強引な営業はしません。</p>
+          <p class="oo-final__person">亀井 宥吏｜VSB Consulting 代表</p>
+          <h2 id="contact-title">まずは15分、画面を見ながら相談しませんか</h2>
+          <p>いちばん重い表を一緒に眺めます。強引な営業はしません。</p>
           <div class="oo-cta-row">
-            <a class="oo-btn oo-btn--light" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料診断フォームへ</a>
+            <a class="oo-btn oo-btn--light" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">15分相談を申し込む</a>
             <a class="oo-btn oo-btn--ghost" href="../contact.html">その他のお問い合わせ</a>
           </div>
           <div class="oo-final__contacts">
@@ -438,6 +363,6 @@
     </div>
   </footer>
 
-  <script src="omniops.js?v=20261127a" defer></script>
+  <script src="omniops.js?v=20261127b" defer></script>
 </body>
 </html>

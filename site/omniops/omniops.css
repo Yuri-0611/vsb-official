@@ -718,6 +718,47 @@ html.js [data-reveal].is-visible {
   font-weight: 800;
 }
 
+.oo-pain--pair {
+  gap: 0.45rem;
+  padding: 0.95rem 1rem;
+  border-left: 3px solid var(--oo-green);
+}
+
+.oo-pain--pair h3 {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--oo-mute);
+  font-weight: 600;
+}
+
+.oo-pain--pair p {
+  margin: 0;
+  color: var(--oo-green-deep);
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.oo-steps--compact .oo-step {
+  padding: 0.95rem 1rem 0.95rem 3.6rem;
+}
+
+.oo-steps--compact .oo-step p {
+  margin-top: 0.2rem;
+}
+
+.oo-strengths__body h3 {
+  font-size: clamp(0.95rem, 2.6vw, 1.08rem);
+  line-height: 1.45;
+}
+
+.oo-final__person {
+  margin: 0 0 0.55rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  opacity: 0.92;
+}
+
 /* —— Strengths —— */
 .oo-strengths {
   overflow: hidden;
