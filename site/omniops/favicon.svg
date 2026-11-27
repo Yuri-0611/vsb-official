@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="OmniOps">
+  <rect width="32" height="32" rx="6" fill="#0b5834"/>
+  <rect x="6" y="6" width="20" height="20" rx="2" fill="#188038"/>
+  <path fill="#fff" d="M8 8h5v5H8zm7 0h5v5h-5zm7 0h5v5h-5zM8 15h5v5H8zm7 0h5v5h-5zm7 0h5v5h-5zM8 22h5v4H8zm7 0h5v4h-5zm7 0h5v4h-5z"/>
+</svg>

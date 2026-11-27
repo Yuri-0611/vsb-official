@@ -3,157 +3,658 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>document.documentElement.classList.add("js");</script>
   <script src="../assets/js/analytics-config.js"></script>
   <script src="../assets/js/analytics.js"></script>
-  <title>OmniOps｜業務改善・仕組み化｜VSB Consulting</title>
-  <meta name="description" content="Excelのコピペ・転記ミスを仕組みでゼロに。現場の表を壊れない運用へ。料金はヒアリング後お見積もり（ASK）。VSB Consultingの業務改善事業。" />
+  <title>OmniOps｜担当者が休んでも、業務が止まらない理由｜VSB Consulting</title>
+  <meta name="description" content="IT専任担当がいない中小企業の業務設計パートナー。スプレッドシート自動化／手作業・転記ミスの削減。OmniOps by VSB Consulting。" />
   <link rel="canonical" href="https://vsb-consulting.jp/omniops/" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://vsb-consulting.jp/omniops/" />
-  <meta property="og:title" content="OmniOps｜業務改善・仕組み化｜VSB Consulting" />
-  <meta property="og:description" content="Excelの転記・集計ミスを仕組みでゼロに。料金はASK（お見積もり）。" />
+  <meta property="og:title" content="OmniOps｜担当者が休んでも、業務が止まらない理由" />
+  <meta property="og:description" content="IT専任担当がいない中小企業の業務設計パートナー。スプレッドシート自動化／手作業・転記ミスの削減。" />
+  <meta property="og:image" content="https://vsb-consulting.jp/omniops/media/ogp.png" />
   <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="OmniOps｜担当者が休んでも、業務が止まらない理由" />
+  <meta name="twitter:description" content="IT専任担当がいない中小企業の業務設計パートナー。スプレッドシート自動化／手作業・転記ミスの削減。" />
+  <meta name="twitter:image" content="https://vsb-consulting.jp/omniops/media/ogp.png" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="../assets/img/vsb-logo-mark.png" type="image/png" />
   <link rel="apple-touch-icon" href="../assets/img/vsb-logo-mark.png" />
+  <link rel="preload" as="image" href="media/poster.jpg" />
+  <link rel="preload" as="image" href="media/ogp.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../assets/css/main.css?v=20260322b" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=JetBrains+Mono:ital,wght@0,500;0,700;1,700&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="omniops.css?v=20261127e" />
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-    {"@type":"ListItem","position":1,"name":"ホーム","item":"https://vsb-consulting.jp/"},
-    {"@type":"ListItem","position":2,"name":"OmniOps","item":"https://vsb-consulting.jp/omniops/"}
-  ]}
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://vsb-consulting.jp/"},
+          {"@type": "ListItem", "position": 2, "name": "OmniOps", "item": "https://vsb-consulting.jp/omniops/"}
+        ]
+      },
+      {
+        "@type": "Service",
+        "name": "OmniOps",
+        "serviceType": "スプレッドシート自動化／手作業・転記ミスの削減",
+        "provider": {
+          "@type": "Organization",
+          "name": "VSB Consulting",
+          "url": "https://vsb-consulting.jp/"
+        },
+        "areaServed": ["神奈川県", "東京都", "埼玉県"],
+        "url": "https://vsb-consulting.jp/omniops/",
+        "description": "IT専任担当がいない中小企業の業務設計パートナー。スプレッドシート自動化／手作業・転記ミスの削減。"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "費用はどのくらいかかりますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "対象業務の範囲や現在のデータ量に応じて、個別にお見積りしています。まずは15分の無料相談で実際のシートを拝見し、作業の範囲と改善の方向を確認したうえで、事前にお見積りをお出しします。後から予期せぬ費用が発生することはありません。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "いまのスプレッドシートを捨てる必要は？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ありません。使い慣れたシートを土台に整えます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "無料診断では何をしますか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "いちばん重い表を伺い、改善の方向を整理して共有します。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "データは安全ですか？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NDAを標準締結。構築はダミーデータ、共有ファイルは納品後に消去します。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "対応エリアは？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "神奈川・東京・埼玉。オンラインも可。"
+            }
+          }
+        ]
+      }
+    ]
+  }
   </script>
 </head>
 <body>
   <a class="skip-link" href="#main">メインコンテンツへスキップ</a>
-  <header class="site-header">
-    <div class="container site-header__inner">
-      <a class="brand brand--logo" href="../index.html"><img class="brand__logo" src="../assets/img/vsb-logo-mark.png" alt="" width="70" height="64" decoding="async" /><span class="brand__text"><span class="brand__mark">VSB</span><span class="brand__name">Consulting</span></span></a>
-      <nav class="site-nav" aria-label="メインナビゲーション">
-        <a href="../service.html">サービス</a>
-        <a href="../flow.html">支援の流れ</a>
-        <a href="../instructor.html">代表紹介</a>
-        <a href="../company.html">会社概要</a>
-        <a href="../faq.html">FAQ</a>
-        <a class="site-nav__omni is-active" href="./" aria-current="page">OmniOps</a>
-        <a href="../contact.html">お問い合わせ</a>
-        <a class="site-nav__cta site-nav__cta--omni" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料診断</a>
+
+  <header class="oo-header">
+    <div class="oo-wrap oo-header__inner">
+      <a class="oo-brand" href="./" aria-current="page">
+        <span class="oo-brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="18" height="18" rx="2" fill="#fff" fill-opacity=".14"/>
+            <path fill="#fff" d="M3 3h4v4H3zm5 0h4v4H8zm5 0h4v4h-4zM3 8h4v4H3zm5 0h4v4H8zm5 0h4v4h-4zM3 13h4v4H3zm5 0h4v4H8zm5 0h4v4h-4z"/>
+          </svg>
+        </span>
+        <span class="oo-brand__text">
+          <span class="oo-brand__name">OmniOps</span>
+          <span class="oo-brand__by">by VSB Consulting</span>
+        </span>
+      </a>
+      <nav class="oo-nav" aria-label="ページ内ナビ">
+        <a href="#video">動画</a>
+        <a href="#pain">課題</a>
+        <a href="#preview">改善イメージ</a>
+        <a href="#strengths">強み</a>
+        <a href="#flow">導入の流れ</a>
+        <a href="#faq">FAQ</a>
+        <a href="../">コーポレート</a>
+        <a class="oo-btn oo-btn--solid oo-btn--nav" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料診断</a>
       </nav>
-      <div class="site-header__tools">
-        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav"><span aria-hidden="true"></span><span class="sr-only">メニューを開く</span></button>
-      </div>
+      <button class="oo-menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="oo-mobile-nav">
+        <span aria-hidden="true"></span>
+        <span class="sr-only">メニューを開く</span>
+      </button>
     </div>
-    <nav class="mobile-nav" id="mobile-nav" data-mobile-nav aria-label="モバイルナビゲーション">
-      <a href="../service.html">サービス</a>
-      <a href="../flow.html">支援の流れ</a>
-      <a href="../instructor.html">代表紹介</a>
-      <a href="../company.html">会社概要</a>
-      <a href="../faq.html">FAQ</a>
-      <a class="site-nav__omni is-active" href="./" aria-current="page">OmniOps</a>
+    <nav class="oo-mobile-nav" id="oo-mobile-nav" data-mobile-nav aria-label="モバイルナビ">
+      <a href="#video">動画</a>
+      <a href="#pain">課題と解決</a>
+      <a href="#preview">改善イメージ</a>
+      <a href="#strengths">3つの強み</a>
+      <a href="#flow">導入の流れ</a>
+      <a href="#faq">FAQ</a>
+      <a href="../">コーポレートTOP</a>
       <a href="../contact.html">お問い合わせ</a>
-      <a class="mobile-nav__cta mobile-nav__cta--omni" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料診断</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料診断フォーム</a>
     </nav>
   </header>
 
   <main id="main">
-    <section class="page-hero page-hero--omni">
-      <div class="container">
-        <nav class="breadcrumb" aria-label="パンくず"><a href="../index.html">ホーム</a><span>/</span><span aria-current="page">OmniOps</span></nav>
-        <p class="section__label">OmniOps · Service</p>
-        <h1>OmniOps</h1>
-        <p class="page-hero__lead">Excelのコピペ・転記ミスを<strong>仕組みでゼロ</strong>に。現場の表を、誰が触っても壊れない運用へ整える業務改善サービスです。</p>
+    <section class="oo-hero" aria-labelledby="hero-title">
+      <div class="oo-wrap">
+        <div class="oo-sheet oo-hero__sheet">
+          <div class="oo-chrome__top">
+            <svg class="oo-chrome__icon" viewBox="0 0 22 22" aria-hidden="true">
+              <rect width="22" height="22" rx="4" fill="#188038"/>
+              <path fill="#fff" d="M4 4h4v4H4zm5 0h4v4H9zm5 0h4v4h-4zM4 9h4v4H4zm5 0h4v4H9zm5 0h4v4h-4zM4 14h4v4H4zm5 0h4v4H9zm5 0h4v4h-4z"/>
+            </svg>
+            <span class="oo-chrome__title">OmniOps</span>
+          </div>
+          <div class="oo-chrome__sub">
+            <span>フィルタ表示</span>
+            <span class="oo-pill">VSB Consulting</span>
+          </div>
+          <div class="oo-formula oo-formula--hero">
+            <span class="oo-formula__cell" aria-hidden="true">B1</span>
+            <span class="oo-formula__fx" aria-hidden="true">fx</span>
+            <span class="oo-formula__text">IT専任担当がいない中小企業の<wbr />業務設計パートナー</span>
+          </div>
+          <div class="oo-grid-head" aria-hidden="true">
+            <span></span><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span>
+          </div>
+          <div class="oo-hero__body">
+            <div class="oo-row-num" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span></div>
+            <div class="oo-hero__content">
+              <div class="oo-hero__cells" aria-hidden="true">
+                <div class="oo-hero__cell oo-hero__cell--a"></div>
+                <div class="oo-selected oo-hero__cell--b oo-selected--empty">
+                  <span class="oo-selected__caret"></span>
+                </div>
+              </div>
+              <p class="oo-hero__eyebrow">SERVICE｜スプレッドシート自動化／手作業・転記ミスの削減</p>
+              <h1 id="hero-title">担当者が休んでも、<wbr />業務が止まらない理由</h1>
+              <div class="oo-hero__actions oo-cta-row">
+                <a class="oo-btn oo-btn--solid" href="#video" data-video-open>1分動画を見る</a>
+                <a class="oo-btn oo-btn--ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">15分相談を申し込む</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="page-body">
-      <div class="container prose">
-        <h2>提供サービス</h2>
-        <ul>
-          <li><strong>業務プロセス診断</strong> — 重い表・転記・集計の実態をヒアリングし、改善余地を整理（無料）</li>
-          <li><strong>壊れない表・運用設計</strong> — 一覧は見るだけ／変更はメニュー経由／履歴を残す型づくり</li>
-          <li><strong>プロトタイプ提示</strong> — 数日以内に動くデモで「楽になる」を画面確認</li>
-          <li><strong>本番構築・自動化</strong> — GAS／入力制限／Web・スプシ連携などで短期納品</li>
-          <li><strong>定着支援</strong> — マニュアル・簡易保守（任意）で現場に根づくまで並走</li>
-        </ul>
-        <p>配車・工程・在庫・回線管理など、Excel文化が残る現場に向いています。大きなシステム刷新の前に、<strong>今日の表が壊れない</strong>ことを優先します。</p>
-        <p>対応エリア：神奈川県（横浜中心）・東京都・埼玉県。オンライン支援も可能です。組織づくりは <a href="../service.html">VSBサービス</a> をご覧ください。</p>
+    <section class="oo-section oo-section--tight" id="video" aria-labelledby="video-title">
+      <div class="oo-wrap">
+        <div class="oo-section__head" data-reveal>
+          <p class="oo-kicker">01 / VIDEO</p>
+          <h2 id="video-title">1分動画で解説</h2>
+        </div>
+        <div class="oo-video" data-reveal>
+          <div class="oo-video__frame is-ready" data-video-home>
+            <div class="oo-video__poster" data-video-poster>
+              <img src="media/poster.jpg" alt="" width="1920" height="1080" decoding="async" />
+              <a class="oo-video__play-btn" href="#video" data-video-open aria-label="1分動画を再生">
+                <span class="oo-video__play-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 5.5v13l11-6.5L8 5.5z" fill="currentColor"/></svg>
+                </span>
+                <span>1分動画を見る</span>
+              </a>
+            </div>
+            <div class="oo-video__slot" data-video-slot>
+              <video
+                class="oo-video__player"
+                controls
+                playsinline
+                preload="none"
+                poster="media/poster.jpg"
+                controlslist="nodownload"
+                aria-label="OmniOpsの解説動画（約1分）"
+              >
+                <source src="media/omniops.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <h2 id="flow">進め方</h2>
-        <div class="flow-list" style="margin:1.25rem 0 1.75rem;">
-          <article class="flow-item">
-            <div class="flow-item__num" aria-hidden="true">01</div>
-            <div class="flow-item__content">
-              <h3>STEP 01｜無料診断</h3>
-              <p>いちばん重い表とかかっている時間をヒアリング。改善余地を無料で整理します。</p>
-            </div>
+    <dialog class="oo-dialog" data-video-dialog aria-label="OmniOps解説動画">
+      <div class="oo-dialog__inner">
+        <button type="button" class="oo-dialog__close" data-video-close aria-label="動画を閉じる">
+          <span aria-hidden="true">×</span>
+        </button>
+        <div class="oo-dialog__stage" data-video-mount></div>
+      </div>
+    </dialog>
+
+    <section class="oo-section" id="pain" aria-labelledby="pain-title">
+      <div class="oo-wrap">
+        <div class="oo-section__head" data-reveal>
+          <p class="oo-kicker">02 / BEFORE → AFTER</p>
+          <h2 id="pain-title">よくある悩み → OmniOps</h2>
+        </div>
+        <div class="oo-pain-grid oo-pain-grid--compact">
+          <article class="oo-pain oo-pain--pair" data-reveal>
+            <h3>担当が休むと止まる</h3>
+            <p>迷わず順番に入力できる専用画面に統一</p>
           </article>
-          <article class="flow-item">
-            <div class="flow-item__num" aria-hidden="true">02</div>
-            <div class="flow-item__content">
-              <h3>STEP 02｜プロトタイプ</h3>
-              <p>数日で動くデモを提示。画面で効果を確認してから本番へ進みます。</p>
-            </div>
+          <article class="oo-pain oo-pain--pair" data-reveal>
+            <h3>転記・コピペでズレる</h3>
+            <p>入力は1回だけ。集計・転記はすべて自動化</p>
           </article>
-          <article class="flow-item">
-            <div class="flow-item__num" aria-hidden="true">03</div>
-            <div class="flow-item__content">
-              <h3>STEP 03｜本番構築</h3>
-              <p>短期で自動化を納品。ご予算・範囲に応じてプランニングします。</p>
-            </div>
+          <article class="oo-pain oo-pain--pair" data-reveal>
+            <h3>作った人しか分からない表</h3>
+            <p>数式を誤って消せない、閲覧・操作の権限分離</p>
           </article>
-          <article class="flow-item">
-            <div class="flow-item__num" aria-hidden="true">04</div>
-            <div class="flow-item__content">
-              <h3>STEP 04｜定着</h3>
-              <p>マニュアル・保守（任意）。現場に根づくまで並走します。</p>
-            </div>
+          <article class="oo-pain oo-pain--pair" data-reveal>
+            <h3>大きな刷新は重い</h3>
+            <p>いま使っているスプレッドシートを活かして部分改善</p>
           </article>
         </div>
+      </div>
+    </section>
 
-        <h2 id="pricing">料金</h2>
-        <p>OmniOpsの料金は固定プランではなく、<strong>ASK（ヒアリング後のお見積もり）</strong>です。表の複雑さ・対象範囲・納期により変動します。</p>
-        <div class="card" style="margin:1.25rem 0 1.5rem;padding:1.5rem;border-left:3px solid var(--omni-teal);background:var(--omni-mint);">
-          <p class="brand-split__ask" style="margin:0 0 0.75rem;"><strong>ASK</strong><span>／ 無料診断のあとお見積もり</span></p>
-          <p style="margin:0;font-size:0.9rem;color:var(--ink-soft);">まずは無料診断で改善余地を共有します。強引な営業はありません。ご予算に応じたプランニングのみご提案します。</p>
+    <section class="oo-section" id="preview" aria-labelledby="preview-title">
+      <div class="oo-wrap">
+        <div class="oo-section__head" data-reveal>
+          <p class="oo-kicker">03 / PREVIEW</p>
+          <h2 id="preview-title">改善イメージ</h2>
         </div>
 
-        <h2>セキュリティのお約束</h2>
-        <ul>
-          <li><strong>NDAの標準締結</strong> — 具体打合せの前に秘密保持契約を締結</li>
-          <li><strong>ダミーデータで構築</strong> — 本番の機密を直接お預かりしない</li>
-          <li><strong>24時間以内の消去</strong> — 共有ファイルは納品・検収後（または24時間以内）に完全消去</li>
-        </ul>
+        <div class="oo-mock" data-reveal data-mock-tabs>
+          <div class="oo-mock__head">
+            <h3 class="oo-mock__title">① 入力パネル</h3>
+            <div class="oo-mock__tabs" role="tablist" aria-label="入力パネルの前後比較">
+              <button type="button" class="oo-mock__tab is-active" role="tab" aria-selected="true" data-mock-tab="before" id="mock-input-before-tab">BEFORE</button>
+              <button type="button" class="oo-mock__tab" role="tab" aria-selected="false" data-mock-tab="after" id="mock-input-after-tab">AFTER</button>
+            </div>
+          </div>
+          <div class="oo-mock__panels">
+            <div class="oo-mock__panel is-active" role="tabpanel" data-mock-panel="before" aria-labelledby="mock-input-before-tab">
+              <div class="oo-mock__scroll">
+                <div class="oo-sheet oo-mock__sheet">
+                  <div class="oo-chrome__top">
+                    <svg class="oo-chrome__icon" viewBox="0 0 22 22" aria-hidden="true">
+                      <rect width="22" height="22" rx="4" fill="#188038"/>
+                      <path fill="#fff" d="M4 4h4v4H4zm5 0h4v4H9zm5 0h4v4h-4zM4 9h4v4H4zm5 0h4v4H9zm5 0h4v4h-4zM4 14h4v4H4zm5 0h4v4H9zm5 0h4v4h-4z"/>
+                    </svg>
+                    <span class="oo-chrome__title">配車メモ_最終_v3</span>
+                  </div>
+                  <div class="oo-formula" aria-hidden="true">
+                    <span class="oo-formula__cell">C4</span>
+                    <span class="oo-formula__fx">fx</span>
+                    <span class="oo-formula__text">田中</span>
+                  </div>
+                  <div class="oo-grid-head oo-grid-head--4" aria-hidden="true">
+                    <span></span><span>A</span><span>B</span><span>C</span><span>D</span>
+                  </div>
+                  <div class="oo-mock-table" role="table" aria-label="手入力の雑多なシート（ダミー）">
+                    <div class="oo-mock-table__row" role="row">
+                      <span class="oo-mock-table__num" aria-hidden="true">1</span>
+                      <span role="cell">日付</span>
+                      <span role="cell">行き先</span>
+                      <span role="cell">運転</span>
+                      <span role="cell">備考</span>
+                    </div>
+                    <div class="oo-mock-table__row" role="row">
+                      <span class="oo-mock-table__num" aria-hidden="true">2</span>
+                      <span role="cell">11/3</span>
+                      <span role="cell">横浜</span>
+                      <span role="cell">佐藤</span>
+                      <span role="cell">朝一?</span>
+                    </div>
+                    <div class="oo-mock-table__row oo-mock-table__row--active" role="row">
+                      <span class="oo-mock-table__num" aria-hidden="true">3</span>
+                      <span role="cell">11/3</span>
+                      <span role="cell">川崎港</span>
+                      <span role="cell" class="oo-mock-table__edit">田中｜</span>
+                      <span role="cell"></span>
+                    </div>
+                    <div class="oo-mock-table__row" role="row">
+                      <span class="oo-mock-table__num" aria-hidden="true">4</span>
+                      <span role="cell">火曜</span>
+                      <span role="cell">相模原</span>
+                      <span role="cell">？</span>
+                      <span role="cell">要確認</span>
+                    </div>
+                    <div class="oo-mock-table__row" role="row">
+                      <span class="oo-mock-table__num" aria-hidden="true">5</span>
+                      <span role="cell">11/5</span>
+                      <span role="cell">厚木</span>
+                      <span role="cell">鈴木</span>
+                      <span role="cell">コピー元</span>
+                    </div>
+                  </div>
+                  <div class="oo-mock__tabsheet" aria-hidden="true">
+                    <span class="is-active">配車</span>
+                    <span>メモ2</span>
+                    <span>古い</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="oo-mock__panel" role="tabpanel" data-mock-panel="after" aria-labelledby="mock-input-after-tab">
+              <div class="oo-mock__scroll">
+                <div class="oo-sheet oo-mock__sheet">
+                  <div class="oo-chrome__top">
+                    <svg class="oo-chrome__icon" viewBox="0 0 22 22" aria-hidden="true">
+                      <rect width="22" height="22" rx="4" fill="#188038"/>
+                      <path fill="#fff" d="M4 4h4v4H4zm5 0h4v4H9zm5 0h4v4h-4zM4 9h4v4H4zm5 0h4v4H9zm5 0h4v4h-4zM4 14h4v4H4zm5 0h4v4H9zm5 0h4v4h-4z"/>
+                    </svg>
+                    <span class="oo-chrome__title">配車台帳</span>
+                  </div>
+                  <div class="oo-mock-panel-ui">
+                    <p class="oo-mock-panel-ui__menu">VSBメニュー › 配車入力</p>
+                    <div class="oo-mock-panel-ui__form">
+                      <label>
+                        <span>日付 <em>必須</em></span>
+                        <span class="oo-mock-panel-ui__field">2026-11-03</span>
+                      </label>
+                      <label>
+                        <span>行き先 <em>必須</em></span>
+                        <span class="oo-mock-panel-ui__field oo-mock-panel-ui__field--select">川崎港</span>
+                      </label>
+                      <label>
+                        <span>運転者 <em>必須</em></span>
+                        <span class="oo-mock-panel-ui__field oo-mock-panel-ui__field--select">田中 健</span>
+                      </label>
+                      <label>
+                        <span>備考</span>
+                        <span class="oo-mock-panel-ui__field">午前便</span>
+                      </label>
+                      <span class="oo-mock-panel-ui__save">保存</span>
+                    </div>
+                  </div>
+                  <div class="oo-mock__tabsheet" aria-hidden="true">
+                    <span class="is-active">配車</span>
+                    <span>マスタ</span>
+                  </div>
+                </div>
+              </div>
+              <p class="oo-mock__caption">入力する場所と順番が決まるので、誰が担当しても同じように入力できる</p>
+            </div>
+          </div>
+          <p class="oo-mock__note">※画面はイメージです（ダミーデータ）</p>
+        </div>
 
-        <p class="cta-row">
-          <a class="btn btn--omni-solid" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">無料で業務プロセス診断</a>
-          <a class="btn btn--outline" href="../service.html">VSBサービスを見る</a>
-          <a class="btn btn--outline" href="../contact.html">お問い合わせ</a>
-        </p>
+        <div class="oo-mock" data-reveal data-mock-tabs>
+          <div class="oo-mock__head">
+            <h3 class="oo-mock__title">② 自動集計</h3>
+            <div class="oo-mock__tabs" role="tablist" aria-label="自動集計の前後比較">
+              <button type="button" class="oo-mock__tab is-active" role="tab" aria-selected="true" data-mock-tab="before" id="mock-agg-before-tab">BEFORE</button>
+              <button type="button" class="oo-mock__tab" role="tab" aria-selected="false" data-mock-tab="after" id="mock-agg-after-tab">AFTER</button>
+            </div>
+          </div>
+          <div class="oo-mock__panels">
+            <div class="oo-mock__panel is-active" role="tabpanel" data-mock-panel="before" aria-labelledby="mock-agg-before-tab">
+              <div class="oo-mock__scroll">
+                <div class="oo-sheet oo-mock__sheet">
+                  <div class="oo-chrome__top">
+                    <svg class="oo-chrome__icon" viewBox="0 0 22 22" aria-hidden="true">
+                      <rect width="22" height="22" rx="4" fill="#188038"/>
+                      <path fill="#fff" d="M4 4h4v4H4zm5 0h4v4H9zm5 0h4v4h-4zM4 9h4v4H4zm5 0h4v4H9zm5 0h4v4h-4zM4 14h4v4H4zm5 0h4v4H9zm5 0h4v4h-4z"/>
+                    </svg>
+                    <span class="oo-chrome__title">週次まとめ_手作業</span>
+                  </div>
+                  <div class="oo-grid-head oo-grid-head--4" aria-hidden="true">
+                    <span></span><span>A</span><span>B</span><span>C</span><span>D</span>
+                  </div>
+                  <div class="oo-mock-table" role="table" aria-label="手で転記している集計表（ダミー）">
+                    <div class="oo-mock-table__row" role="row">
+                      <span class="oo-mock-table__num" aria-hidden="true">1</span>
+                      <span role="cell">運転</span>
+                      <span role="cell">便数</span>
+                      <span role="cell">メモ</span>
+                      <span role="cell">確認</span>
+                    </div>
+                    <div class="oo-mock-table__row" role="row">
+                      <span class="oo-mock-table__num" aria-hidden="true">2</span>
+                      <span role="cell">佐藤</span>
+                      <span role="cell">12?</span>
+                      <span role="cell">貼付漏れ</span>
+                      <span role="cell">未</span>
+                    </div>
+                    <div class="oo-mock-table__row" role="row">
+                      <span class="oo-mock-table__num" aria-hidden="true">3</span>
+                      <span role="cell">田中</span>
+                      <span role="cell">9</span>
+                      <span role="cell">再計算中</span>
+                      <span role="cell">未</span>
+                    </div>
+                    <div class="oo-mock-table__row" role="row">
+                      <span class="oo-mock-table__num" aria-hidden="true">4</span>
+                      <span role="cell">鈴木</span>
+                      <span role="cell">—</span>
+                      <span role="cell">コピペ待ち</span>
+                      <span role="cell">未</span>
+                    </div>
+                  </div>
+                  <div class="oo-mock__tabsheet" aria-hidden="true">
+                    <span class="is-active">集計</span>
+                    <span>元データ</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="oo-mock__panel" role="tabpanel" data-mock-panel="after" aria-labelledby="mock-agg-after-tab">
+              <div class="oo-mock__scroll">
+                <div class="oo-sheet oo-mock__sheet">
+                  <div class="oo-chrome__top">
+                    <svg class="oo-chrome__icon" viewBox="0 0 22 22" aria-hidden="true">
+                      <rect width="22" height="22" rx="4" fill="#188038"/>
+                      <path fill="#fff" d="M4 4h4v4H4zm5 0h4v4H9zm5 0h4v4h-4zM4 9h4v4H4zm5 0h4v4H9zm5 0h4v4h-4zM4 14h4v4H4zm5 0h4v4H9zm5 0h4v4h-4z"/>
+                    </svg>
+                    <span class="oo-chrome__title">配車ダッシュボード</span>
+                  </div>
+                  <div class="oo-grid-head oo-grid-head--4" aria-hidden="true">
+                    <span></span><span>A</span><span>B</span><span>C</span><span>D</span>
+                  </div>
+                  <div class="oo-mock-table oo-mock-table--dash" role="table" aria-label="自動集計ダッシュボード（ダミー）">
+                    <div class="oo-mock-table__row oo-mock-table__row--head" role="row">
+                      <span class="oo-mock-table__num" aria-hidden="true">1</span>
+                      <span role="cell">運転者</span>
+                      <span role="cell">便数</span>
+                      <span role="cell">エリア</span>
+                      <span role="cell">状態</span>
+                    </div>
+                    <div class="oo-mock-table__row" role="row">
+                      <span class="oo-mock-table__num" aria-hidden="true">2</span>
+                      <span role="cell">佐藤 誠</span>
+                      <span role="cell">14</span>
+                      <span role="cell">横浜</span>
+                      <span role="cell"><span class="oo-mock-badge oo-mock-badge--ok">反映済</span></span>
+                    </div>
+                    <div class="oo-mock-table__row" role="row">
+                      <span class="oo-mock-table__num" aria-hidden="true">3</span>
+                      <span role="cell">田中 健</span>
+                      <span role="cell">11</span>
+                      <span role="cell">川崎</span>
+                      <span role="cell"><span class="oo-mock-badge oo-mock-badge--ok">反映済</span></span>
+                    </div>
+                    <div class="oo-mock-table__row" role="row">
+                      <span class="oo-mock-table__num" aria-hidden="true">4</span>
+                      <span role="cell">鈴木 翔</span>
+                      <span role="cell">8</span>
+                      <span role="cell">厚木</span>
+                      <span role="cell"><span class="oo-mock-badge oo-mock-badge--ok">反映済</span></span>
+                    </div>
+                    <div class="oo-mock-table__row oo-mock-table__row--total" role="row">
+                      <span class="oo-mock-table__num" aria-hidden="true">5</span>
+                      <span role="cell">合計</span>
+                      <span role="cell">33</span>
+                      <span role="cell">—</span>
+                      <span role="cell">自動</span>
+                    </div>
+                  </div>
+                  <div class="oo-mock__tabsheet" aria-hidden="true">
+                    <span class="is-active">集計</span>
+                    <span>入力</span>
+                    <span>マスタ</span>
+                  </div>
+                </div>
+              </div>
+              <p class="oo-mock__caption">入力した内容がそのまま集計に反映され、転記作業がいらない</p>
+            </div>
+          </div>
+          <p class="oo-mock__note">※画面はイメージです（ダミーデータ）</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="oo-section" id="strengths" aria-labelledby="strengths-title">
+      <div class="oo-wrap">
+        <div class="oo-section__head" data-reveal>
+          <p class="oo-kicker">04 / STRENGTHS</p>
+          <h2 id="strengths-title">OmniOpsの3つの強み</h2>
+        </div>
+        <div class="oo-sheet oo-strengths" data-reveal>
+          <div class="oo-chrome__top">
+            <svg class="oo-chrome__icon" viewBox="0 0 22 22" aria-hidden="true">
+              <rect width="22" height="22" rx="4" fill="#188038"/>
+              <path fill="#fff" d="M4 4h4v4H4zm5 0h4v4H9zm5 0h4v4h-4zM4 9h4v4H4zm5 0h4v4H9zm5 0h4v4h-4zM4 14h4v4H4zm5 0h4v4H9zm5 0h4v4h-4z"/>
+            </svg>
+            <span class="oo-chrome__title">OmniOps</span>
+          </div>
+          <div class="oo-formula">
+            <span class="oo-formula__cell" aria-hidden="true">E2</span>
+            <span class="oo-formula__fx" aria-hidden="true">fx</span>
+            <span class="oo-formula__text">OmniOpsの3つの強み</span>
+          </div>
+          <div class="oo-strengths__header" role="row">
+            <div class="oo-strengths__num" aria-hidden="true"></div>
+            <div class="oo-strengths__body"><span>導入メリット</span></div>
+          </div>
+          <div class="oo-strengths__row">
+            <div class="oo-strengths__num">01</div>
+            <div class="oo-strengths__body">
+              <h3>二重入力をなくし、転記ミスと残業を大幅削減</h3>
+            </div>
+          </div>
+          <div class="oo-strengths__row">
+            <div class="oo-strengths__num">02</div>
+            <div class="oo-strengths__body">
+              <h3>高額なシステムに、現場を合わせるストレスなし</h3>
+            </div>
+          </div>
+          <div class="oo-strengths__row">
+            <div class="oo-strengths__num">03</div>
+            <div class="oo-strengths__body">
+              <h3>IT担当不在でも、導入後の運用・改善まで伴走</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="oo-section" id="flow" aria-labelledby="flow-title">
+      <div class="oo-wrap">
+        <div class="oo-section__head" data-reveal>
+          <p class="oo-kicker">05 / FLOW</p>
+          <h2 id="flow-title">導入の流れ</h2>
+        </div>
+        <div class="oo-steps oo-steps--compact">
+          <article class="oo-step" data-reveal>
+            <h3>無料診断</h3>
+            <p>重い表をヒアリング</p>
+          </article>
+          <article class="oo-step" data-reveal>
+            <h3>プロトタイプ</h3>
+            <p>画面で確認</p>
+          </article>
+          <article class="oo-step" data-reveal>
+            <h3>本番構築</h3>
+            <p>パネルと保護を実装</p>
+          </article>
+          <article class="oo-step" data-reveal>
+            <h3>定着・改善</h3>
+            <p>使いながら伴走</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="oo-section" id="faq" aria-labelledby="faq-title">
+      <div class="oo-wrap">
+        <div class="oo-section__head" data-reveal>
+          <p class="oo-kicker">06 / FAQ</p>
+          <h2 id="faq-title">よくある質問</h2>
+        </div>
+        <div class="oo-faq" data-reveal>
+          <details open>
+            <summary>費用はどのくらいかかりますか？</summary>
+            <p>対象業務の範囲や現在のデータ量に応じて、個別にお見積りしています。まずは15分の無料相談で実際のシートを拝見し、作業の範囲と改善の方向を確認したうえで、事前にお見積りをお出しします。後から予期せぬ費用が発生することはありません。</p>
+          </details>
+          <details>
+            <summary>いまのスプレッドシートを捨てる必要は？</summary>
+            <p>ありません。使い慣れたシートを土台に整えます。</p>
+          </details>
+          <details>
+            <summary>無料診断では何をしますか？</summary>
+            <p>いちばん重い表を伺い、改善の方向を整理して共有します。</p>
+          </details>
+          <details>
+            <summary>データは安全ですか？</summary>
+            <p>NDAを標準締結。構築はダミーデータ、共有ファイルは納品後に消去します。</p>
+          </details>
+          <details>
+            <summary>対応エリアは？</summary>
+            <p>神奈川・東京・埼玉。オンラインも可。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="oo-final" id="contact" aria-labelledby="contact-title">
+      <div class="oo-wrap">
+        <div class="oo-final__panel" data-reveal>
+          <p class="oo-final__person">
+            <span class="oo-final__name">亀井 宥吏</span>
+            <span class="oo-final__sep" aria-hidden="true">｜</span>
+            <span class="oo-final__role">OmniOps 事業責任者 / BizOpsコンサルタント<wbr />（VSB Consulting 代表）</span>
+          </p>
+          <h2 id="contact-title">まずは15分、画面を見ながら相談しませんか</h2>
+          <p>15分の画面共有で、どの手作業を減らせそうかを整理した「簡易改善プラン」をその場でお伝えします。強引な営業は一切しません。</p>
+          <div class="oo-cta-row">
+            <a class="oo-btn oo-btn--light" href="https://docs.google.com/forms/d/e/1FAIpQLSct-dqVVbJoTmTW3WHw4V9aveqsARoGPKxXMLE4grnkn4l0Gw/viewform" target="_blank" rel="noopener">15分相談を申し込む</a>
+            <a class="oo-btn oo-btn--ghost" href="../contact.html">その他のお問い合わせ</a>
+          </div>
+          <div class="oo-final__contacts">
+            <a href="mailto:yuri.kamei@vsb-consulting.jp">yuri.kamei@vsb-consulting.jp</a>
+            <a href="tel:08098936328">080-9893-6328</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="site-footer__main">
-      <div class="container site-footer__grid">
-        <div>
-          <div class="footer__brand"><img class="footer__logo" src="../assets/img/vsb-logo-mark-light.png" alt="" width="68" height="60" decoding="async" /><span class="footer__brand-text"><span class="footer__brand-mark">VSB</span><span class="footer__brand-name">Consulting</span></span></div>
-          <p><a href="mailto:omniops@vsb-consulting.jp">omniops@vsb-consulting.jp</a><br /><a href="tel:08098936328">080-9893-6328</a></p>
-        </div>
-        <div>
-          <nav class="footer-links" aria-label="フッターナビゲーション">
-            <a href="../service.html">サービス</a>
-            <a class="footer-links__omni" href="./">OmniOps</a>
-            <a href="../privacy.html">プライバシーポリシー</a>
-            <a href="../contact.html">お問い合わせ</a>
-          </nav>
-          <small>© 2026 Venture Sports Base</small>
-        </div>
+  <footer class="oo-footer">
+    <div class="oo-wrap oo-footer__grid">
+      <div>
+        <div class="oo-footer__brand">OmniOps</div>
+        <p class="oo-footer__by">by VSB Consulting</p>
+        <p class="oo-footer__tag">IT専任担当がいない中小企業の業務設計パートナー</p>
+        <p class="oo-footer__url">vsb-consulting.jp/omniops</p>
+      </div>
+      <div>
+        <nav class="oo-footer__links" aria-label="フッター">
+          <a href="../">コーポレートTOP</a>
+          <a href="../service.html">サービス</a>
+          <a href="../faq.html">FAQ</a>
+          <a href="../privacy.html">プライバシーポリシー</a>
+          <a href="../contact.html">お問い合わせ</a>
+        </nav>
+        <small>© 2026 VSB Consulting</small>
       </div>
     </div>
   </footer>
-  <script src="../assets/js/main.js" defer></script>
+
+  <script src="omniops.js?v=20261127e" defer></script>
 </body>
 </html>
