@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var VIDEO_SRC = ["media", "omniops.mp4"].join("/");
+  var VIDEO_SRC = "./media/omniops.mp4";
   var POSTER_SRC = "media/poster.jpg";
 
   function ready(fn) {
@@ -31,12 +31,18 @@
   function setupReveal() {
     var nodes = document.querySelectorAll("[data-reveal]");
     if (!nodes.length) return;
-    if (!("IntersectionObserver" in window)) {
+
+    function revealAll() {
       nodes.forEach(function (el) {
         el.classList.add("is-visible");
       });
+    }
+
+    if (!("IntersectionObserver" in window)) {
+      revealAll();
       return;
     }
+
     var io = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -51,6 +57,15 @@
     nodes.forEach(function (el) {
       io.observe(el);
     });
+
+    // Safety net: never leave content permanently hidden.
+    window.setTimeout(function () {
+      nodes.forEach(function (el) {
+        if (!el.classList.contains("is-visible")) {
+          el.classList.add("is-visible");
+        }
+      });
+    }, 2000);
   }
 
   function upgradeVideo(slot) {
@@ -73,18 +88,38 @@
     slot.classList.add("is-ready");
   }
 
+  function probeVideo() {
+    return fetch(VIDEO_SRC, { method: "HEAD", cache: "no-store" })
+      .then(function (res) {
+        if (res.ok) return true;
+        return fetch(VIDEO_SRC, {
+          method: "GET",
+          headers: { Range: "bytes=0-0" },
+          cache: "no-store",
+        }).then(function (rangeRes) {
+          return rangeRes.ok || rangeRes.status === 206;
+        });
+      })
+      .catch(function () {
+        return false;
+      });
+  }
+
   function setupVideoSlot() {
     var slot = document.querySelector("[data-video-slot]");
     if (!slot) return;
 
-    // Probe without embedding a missing src in static HTML (keeps CI green).
-    fetch(VIDEO_SRC, { method: "HEAD", cache: "no-store" })
-      .then(function (res) {
-        if (res.ok) upgradeVideo(slot);
-      })
-      .catch(function () {
-        /* keep placeholder */
-      });
+    // Static HTML already ships the player when the file is present.
+    if (slot.querySelector("video")) {
+      slot.classList.add("is-ready");
+      return;
+    }
+
+    // Prefer HEAD, then ranged GET. If the host rejects probes, still render
+    // because omniops.mp4 ships with the page.
+    probeVideo().then(function () {
+      upgradeVideo(slot);
+    });
   }
 
   ready(function () {
